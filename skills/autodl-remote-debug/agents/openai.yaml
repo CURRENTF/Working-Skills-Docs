@@ -1,0 +1,4 @@
+interface:
+  display_name: "AutoDL 远程调试"
+  short_description: "SSH/conda/代理/路径规则的 AutoDL 调试流程，支持动态选环境"
+  default_prompt: "帮我在 AutoDL/GPUHub 远程服务器上调试/运行项目：避免写系统盘（只用 /root/autodl-tmp 与 /root/autodl-fs）、模型 ckpt 在 /root/autodl-fs/models/ 且网络慢/外网不畅所以优先用本地 ckpt 路径、数据集在 /root/autodl-fs/datasets/ 且优先用本地数据集路径、Git/下载前先 source /etc/network_turbo、登录后先检查项目文件和 conda env list 来动态选择最合适的 conda 环境，不确定就先问用户，不要默认假设是 kv；确定环境后再用 conda activate 或 /root/miniconda3/bin/conda run -n <ENV_NAME> --no-capture-output。运行前设置 PYTHONPATH=/root/autodl-tmp/PROJECT_NAME/src，并给出可复制的一步步命令。SSH 默认：ssh -p <PORT> root@connect.westc.gpuhub.com（端口会变）。优先用脚本 scripts/autodl_run.sh 避免复杂引号转义。"
