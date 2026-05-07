@@ -41,7 +41,14 @@ Record enough run information to reproduce the experiment:
 - config and command
 - model and dataset split
 - prompt and decoding parameters
+- performance-critical backend choices such as attention implementation, quantization mode, batch size, and visible GPU ids
 - seed and sample count
+
+## Performance Benchmarks
+
+- Before a throughput, latency, GPU utilization, or power benchmark, explicitly verify that the command uses the intended performance backend. Do not carry over a conservative correctness baseline such as `sdpa`, eager attention, `bs=1`, debug/profiler flags, or CPU preprocessing when the user is asking for maximum throughput.
+- Run a small sanity comparison across the intended backend and batch size first, then use the fastest correct configuration for the long run. Report the measured sanity throughput when choosing the full-run command.
+- If a benchmark result looks underutilized or unexpectedly slow, inspect the actual command, resolved config, and runtime logs before attributing the result to the model or method.
 
 ## Final Checks
 
