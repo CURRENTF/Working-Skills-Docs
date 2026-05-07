@@ -1,0 +1,4 @@
+interface:
+  display_name: "General Coding"
+  short_description: "Research-code reliability rules for auditable experiments"
+  default_prompt: "Use $general-coding while editing this research codebase so failures stay explicit, evaluation statuses are recorded, and experiment outputs remain reproducible."
