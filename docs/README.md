@@ -9,3 +9,7 @@ This directory stores human-readable documentation for skills in this repo.
 ## General Coding
 
 - [Research Code Rules](general-coding/research-code-rules.md)
+
+## Repo Ops Docs
+
+- [Operational Knowledge Capture](repo-ops-docs/operational-knowledge.md)
