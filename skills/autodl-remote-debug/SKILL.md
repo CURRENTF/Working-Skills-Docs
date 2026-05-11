@@ -1,6 +1,6 @@
 ---
 name: autodl-remote-debug
-description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服务器，也支持在远程服务器上直接运行 Codex；避免写系统盘；优先使用 /root/autodl-tmp 与 /root/autodl-fs；网络操作前先检查已有代理；动态选择 conda 环境；长命令写入 scripts/tmp/*.sh 避免引号转义问题。Use when debugging or running projects in an AutoDL/GPUHub environment.
+description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服务器，也支持在远程服务器上直接运行 Codex；避免写系统盘；代码/临时中间文件优先用 /root/autodl-tmp，预训练模型、数据集、训练 ckpt、日志和输出分别放 /root/autodl-fs/models、datasets、checkpoints、logs、outputs；网络操作前先检查已有代理；动态选择 conda 环境；长命令写入 scripts/tmp/*.sh 避免引号转义问题。Use when debugging or running projects in an AutoDL/GPUHub environment.
 ---
 
 # AutoDL/GPUHub Debug
@@ -8,8 +8,8 @@ description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服
 ## 核心规则
 
 - 可能通过 SSH 操作远程服务器，也可能已经在远程服务器上直接运行 Codex；先判断当前执行位置。
-- 避免写系统盘：代码和中间产物优先放 `/root/autodl-tmp`，权重、数据集、缓存和长期日志优先放 `/root/autodl-fs`。
-- 模型优先使用 `/root/autodl-fs/models/` 下的本地 ckpt；数据集优先使用 `/root/autodl-fs/datasets/` 下的本地路径。
+- 避免写系统盘：代码、clone 的项目和临时中间文件优先放 `/root/autodl-tmp`；需要长期保留或体积较大的产物放 `/root/autodl-fs`。
+- AutoDL/GPUHub 路径约定：预训练模型 ckpt 放 `/root/autodl-fs/models/`，数据集放 `/root/autodl-fs/datasets/`，自己训练产生的 ckpt 放 `/root/autodl-fs/checkpoints/`，logs 放 `/root/autodl-fs/logs/`，其他输出放 `/root/autodl-fs/outputs/`。
 - Git、下载权重、下载数据集前，先检查是否已有 Clash 等代理；如果已有可用代理，不需要再 `source /etc/network_turbo`。
 - 先检查项目文件和 `conda env list`，再选择 conda 环境；不确定时先问用户。
 - 确定环境后，用 `conda activate <ENV_NAME>`，或用 `/root/miniconda3/bin/conda run -n <ENV_NAME> --no-capture-output <cmd>` 运行命令。
