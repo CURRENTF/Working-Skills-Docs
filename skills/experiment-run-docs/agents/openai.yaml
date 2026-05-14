@@ -1,0 +1,4 @@
+interface:
+  display_name: "Experiment Run Docs"
+  short_description: "Record experiments, configs, checkpoints, results, and logs"
+  default_prompt: "Use $experiment-run-docs after running or analyzing experiments to document the command, config, data, model/checkpoints, results, artifacts, and logs in this repo's docs."

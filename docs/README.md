@@ -10,6 +10,10 @@ This directory stores human-readable documentation for skills in this repo.
 
 - [Research Code Rules](general-coding/research-code-rules.md)
 
+## Experiment Run Docs
+
+- Skill: `skills/experiment-run-docs/SKILL.md`
+
 ## Goal Draft Review
 
 - Skill: `skills/goal-draft-review/SKILL.md`
