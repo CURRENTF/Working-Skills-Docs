@@ -11,8 +11,8 @@ Use this skill to make every experiment auditable after Codex runs or analyzes i
 
 1. Before finishing the user turn, identify every experiment run, resumed run, evaluation, benchmark, or analysis performed in this session.
 2. Inspect the actual command, config, logs, result files, checkpoint directories, and terminal output that support the record.
-3. Update an existing experiment doc if one exists, such as `docs/experiments.md`, `docs/experiment-records.md`, `docs/runs.md`, or a topic-specific file under `docs/`.
-4. If no suitable doc exists, create `docs/experiments.md`. If the repo has `docs/README.md`, add the new experiment doc to its index.
+3. Update an existing experiment doc if one exists, preferring `docs/dev-notes/experiment-records.md` or a topic-specific file under `docs/dev-notes/` when the repo separates stable docs from historical records.
+4. If no suitable doc exists, create `docs/dev-notes/experiment-records.md` when the repo has a substantial public `docs/` tree; otherwise create `docs/experiments.md`. If the repo has `docs/README.md`, add the experiment doc under a "Development Notes" or "Historical Records" section, not before stable setup/architecture/reproducibility docs.
 5. Add one entry per distinct run or variant. Use stable run names, timestamps, or log/checkpoint directory names so entries can be matched back to artifacts.
 6. After a long-running job is launched but before it finishes, record a `running` entry with the command, working directory, PID/session if available, expected outputs, and log path. Update the same entry after completion.
 
@@ -40,6 +40,7 @@ Include the fields that apply. Write `TBD` or `not captured` instead of inventin
 - For multiple variants, use a table that maps run id to command/config, log path, checkpoint path, and final result.
 - Do not paste large logs into docs. Summarize the relevant lines and link or path to the full log.
 - Redact secrets, tokens, private URLs, and credentials from recorded commands and logs.
+- Keep exact run records, failed attempts, and dated implementation context out of the main public docs flow when possible. Stable docs should link to historical records rather than embed long chronological change logs.
 
 ## Suggested Entry Template
 

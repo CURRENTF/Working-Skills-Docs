@@ -15,6 +15,7 @@ Use this skill when operational knowledge matters more than code changes: how to
 4. Put reusable cross-repo patterns in this `Working-Skills-Docs` repo when it is the current repo or when the user explicitly asks to update it.
 5. Keep docs actionable: exact commands, working directory, required environment, expected outputs, where artifacts land, and how to stop or clean up.
 6. Prefer updating an existing relevant doc over creating a new one. Create a new doc only when no suitable location exists.
+7. Keep stable user-facing docs separate from dated development notes and experiment records. See `docs/repo-ops-docs/documentation-structure.md` in Working-Skills-Docs for the recommended layout.
 
 ## What To Capture
 
@@ -30,6 +31,7 @@ Use this skill when operational knowledge matters more than code changes: how to
 - If the repo already has `docs/`, add or update a focused file there.
 - If the repo lacks docs, create `docs/README.md` for an index and one focused doc such as `docs/training.md`, `docs/data-generation.md`, or `docs/datasets.md`.
 - If knowledge spans multiple operations, prefer small topic docs plus an index instead of one long catch-all page.
+- If docs contain many dated run records or change logs, keep them but move them under `docs/dev-notes/` and make `docs/README.md` point first to stable docs such as `architecture.md`, `reproducibility.md`, setup, datasets, and benchmark runbooks.
 - In `Working-Skills-Docs`, place human-readable references under `docs/<skill-or-topic>/` and update `docs/README.md`.
 
 ## Suggested Doc Shape
@@ -65,4 +67,5 @@ Use the sections that fit; omit irrelevant ones.
 - Do not claim a command works unless it was run or the source repo clearly documents it.
 - Keep secrets out of docs. Use placeholder names for tokens, private URLs, and credentials.
 - Mention uncertainty explicitly with `TBD` or `Observed on <date>` rather than smoothing it over.
+- Stable docs should describe the current workflow in present tense. Put chronological "what changed" detail in `docs/dev-notes/` unless it explains a current compatibility constraint.
 - When docs become generally useful, propose or add a concise generalized version to `Working-Skills-Docs/docs/`.

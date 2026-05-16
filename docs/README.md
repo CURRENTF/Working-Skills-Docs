@@ -25,3 +25,4 @@ This directory stores human-readable documentation for skills in this repo.
 ## Repo Ops Docs
 
 - [Operational Knowledge Capture](repo-ops-docs/operational-knowledge.md)
+- [Documentation Structure](repo-ops-docs/documentation-structure.md)

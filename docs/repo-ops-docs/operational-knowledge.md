@@ -7,6 +7,9 @@ Use this guide for non-code knowledge that makes a repo runnable: training servi
 - Project-specific details belong in that project repo under `docs/`.
 - Reusable procedures belong in `Working-Skills-Docs/docs/`.
 - If a workflow is both project-specific and reusable, keep exact commands in the project repo and keep the generalized pattern here.
+- Keep public docs and historical notes separate. Stable setup, architecture,
+  reproducibility, and runbook docs should be easy to find; dated experiment
+  records and code-change history should usually live under `docs/dev-notes/`.
 
 ## What Good Docs Include
 
