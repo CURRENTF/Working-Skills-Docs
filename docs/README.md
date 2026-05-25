@@ -26,3 +26,7 @@ This directory stores human-readable documentation for skills in this repo.
 
 - [Operational Knowledge Capture](repo-ops-docs/operational-knowledge.md)
 - [Documentation Structure](repo-ops-docs/documentation-structure.md)
+
+## PPT Rebuild v15
+
+- Skill: `skills/ppt-rebuild-v15/SKILL.md`

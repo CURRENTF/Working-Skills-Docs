@@ -1,0 +1,28 @@
+version: v15
+routing:
+  default_fallback: textless_backdrop_editable_layer
+  ignore_empty_template_placements: true
+  fail_on_unknown: false
+asset_policy:
+  crop_source_assets_first: true
+  generate_svg_png_fallback_when_no_source: true
+  generated_asset_kinds:
+    - green_building
+    - awareness_training
+    - carbon_dashboard
+  asset_types:
+    - image
+    - photo
+    - icon
+  never_silently_replace_source_assets: true
+qa:
+  max_text_overflow: 0
+  max_text_overlap_ratio: 0.03
+  min_editable_chars: 50
+  require_render_preview_review: true
+text_measurement:
+  scene_font_unit: source_pixels
+  ppt_point_conversion: "pt = px * 0.72"
+fonts:
+  title: PingFang SC
+  body: PingFang SC

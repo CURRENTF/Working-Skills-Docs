@@ -1,0 +1,8 @@
+{
+  "slide_size": [1600, 900],
+  "page_type": "left_argument_arrow_infographic",
+  "objects": [
+    {"id":"title","type":"text","text":"市场洞察：欧美、链主与中国政府的博弈","bbox":[70,70,980,60],"style":{"font_size":28,"bold":true,"color":"#0f236b"}},
+    {"id":"target","type":"text","text":"万亿级\n双碳市场","bbox":[1200,300,220,110],"style":{"font_size":26,"bold":true,"color":"#ffffff"}}
+  ]
+}

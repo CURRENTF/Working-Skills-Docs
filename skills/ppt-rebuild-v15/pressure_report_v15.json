@@ -1,0 +1,26 @@
+{
+  "version": "v15",
+  "status": "validated_on_user_image_scene",
+  "focus": [
+    "placement_plan_rendering",
+    "source_asset_cropping",
+    "svg_png_asset_generation",
+    "editable_text_overlay",
+    "source_pixel_to_ppt_point_font_conversion",
+    "render_preview_review"
+  ],
+  "badcases_addressed": [
+    "v13_empty_template_plan_not_used",
+    "source_photo_replaced_by_placeholder",
+    "missing_source_image_needs_generated_svg_png_assets",
+    "json_qa_pass_but_rendered_text_overlap",
+    "two_column_1_0_vs_2_0_badge_wrapping"
+  ],
+  "hard_gates": {
+    "text_overflow": "fail",
+    "text_overlap": "fail",
+    "editable_chars_too_low": "fail",
+    "missing_render_preview": "review_required",
+    "uncropped_source_asset_replaced_silently": "fail"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"TemplatePlan",
+  "type":"object",
+  "required":["template_id","placements"],
+  "properties":{
+    "template_id":{"type":"string"},
+    "placements":{"type":"array"},
+    "qa_hints":{"type":"object"}
+  }
+}

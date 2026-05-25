@@ -1,0 +1,76 @@
+{
+  "slide_size": [1600, 900],
+  "page_type": "editable_scene",
+  "objects": [
+    {"id": "bg", "type": "rect", "bbox": [0, 0, 1600, 900], "style": {"fill": "#f7faf3", "stroke": "none"}},
+    {"id": "eyebrow", "type": "text", "text": "工信部导向·零碳工厂12项功能拆解", "bbox": [98, 42, 620, 38], "style": {"font_size": 25, "bold": true, "color": "#858585"}},
+    {"id": "accent", "type": "rect", "bbox": [75, 74, 12, 62], "style": {"fill": "#00b8a0", "stroke": "none"}},
+    {"id": "title", "type": "text", "text": "功能 10-12： 绿色建筑标准 / 员工双碳意识培养 / 碳资产管理体系", "bbox": [98, 96, 1350, 54], "style": {"font_size": 36, "bold": true, "color": "#000c58"}},
+    {"id": "top_rule", "type": "line", "from": [75, 178], "to": [1178, 178], "style": {"stroke": "#76d8c8", "stroke_width": 1.2}},
+    {"id": "hex1", "type": "hexagon", "bbox": [1375, 0, 92, 70], "style": {"fill": "transparent", "stroke": "#bfe9df", "stroke_width": 1}},
+    {"id": "hex2", "type": "hexagon", "bbox": [1450, 0, 92, 70], "style": {"fill": "transparent", "stroke": "#bfe9df", "stroke_width": 1}},
+    {"id": "hex3", "type": "hexagon", "bbox": [1430, 72, 92, 70], "style": {"fill": "transparent", "stroke": "#d4eee8", "stroke_width": 1}},
+
+    {"id": "timeline", "type": "rounded_rect", "bbox": [68, 220, 1450, 30], "style": {"fill": "#b5ebe0", "stroke": "none"}},
+    {"id": "dot1", "type": "ellipse", "bbox": [118, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot2", "type": "ellipse", "bbox": [240, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot3", "type": "ellipse", "bbox": [362, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot4", "type": "ellipse", "bbox": [484, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot5", "type": "ellipse", "bbox": [606, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot6", "type": "ellipse", "bbox": [728, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot7", "type": "ellipse", "bbox": [850, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot8", "type": "ellipse", "bbox": [972, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "dot9", "type": "ellipse", "bbox": [1094, 229, 18, 18], "style": {"fill": "#00af9a", "stroke": "none"}},
+    {"id": "badge10", "type": "ellipse", "bbox": [1200, 212, 46, 46], "style": {"fill": "#00b99f", "stroke": "#6ee8d4", "stroke_width": 4}, "text": "10", "text_style": {"font_size": 18, "bold": true, "color": "#ffffff"}},
+    {"id": "badge11", "type": "ellipse", "bbox": [1320, 212, 46, 46], "style": {"fill": "#00b99f", "stroke": "#6ee8d4", "stroke_width": 4}, "text": "11", "text_style": {"font_size": 18, "bold": true, "color": "#ffffff"}},
+    {"id": "badge12", "type": "ellipse", "bbox": [1440, 212, 46, 46], "style": {"fill": "#00b99f", "stroke": "#6ee8d4", "stroke_width": 4}, "text": "12", "text_style": {"font_size": 18, "bold": true, "color": "#ffffff"}},
+
+    {"id": "card10_shadow", "type": "rounded_rect", "bbox": [82, 296, 456, 512], "style": {"fill": "#d4d4d4", "stroke": "none", "transparency": 50}},
+    {"id": "card11_shadow", "type": "rounded_rect", "bbox": [570, 296, 456, 512], "style": {"fill": "#d4d4d4", "stroke": "none", "transparency": 50}},
+    {"id": "card12_shadow", "type": "rounded_rect", "bbox": [1058, 296, 456, 512], "style": {"fill": "#d4d4d4", "stroke": "none", "transparency": 50}},
+
+    {"id": "card10", "type": "rounded_rect", "bbox": [72, 286, 456, 512], "style": {"fill": "#e0fbf2", "stroke": "#00b99f", "stroke_width": 4}},
+    {"id": "card11", "type": "rounded_rect", "bbox": [560, 286, 456, 512], "style": {"fill": "#f8f9fb", "stroke": "#002f6c", "stroke_width": 4}},
+    {"id": "card12", "type": "rounded_rect", "bbox": [1048, 286, 456, 512], "style": {"fill": "#fffaf1", "stroke": "#dec17a", "stroke_width": 4}},
+
+    {"id": "num10_glow", "type": "ellipse", "bbox": [104, 322, 76, 76], "style": {"fill": "#b4efe5", "stroke": "none"}},
+    {"id": "num11_glow", "type": "ellipse", "bbox": [592, 322, 76, 76], "style": {"fill": "#d8dde5", "stroke": "none"}},
+    {"id": "num12_glow", "type": "ellipse", "bbox": [1080, 322, 76, 76], "style": {"fill": "#f4e5b8", "stroke": "none"}},
+    {"id": "num10", "type": "text", "text": "10", "bbox": [103, 324, 78, 70], "style": {"font_size": 48, "bold": true, "color": "#002b69", "align": "center"}, "valign": "middle"},
+    {"id": "num11", "type": "text", "text": "11", "bbox": [591, 324, 78, 70], "style": {"font_size": 48, "bold": true, "color": "#002b69", "align": "center"}, "valign": "middle"},
+    {"id": "num12", "type": "text", "text": "12", "bbox": [1079, 324, 78, 70], "style": {"font_size": 48, "bold": true, "color": "#002b69", "align": "center"}, "valign": "middle"},
+
+    {"id": "asset_green_building", "type": "image", "asset_kind": "green_building", "bbox": [286, 315, 190, 120]},
+    {"id": "asset_awareness", "type": "image", "asset_kind": "awareness_training", "bbox": [718, 312, 255, 130]},
+    {"id": "asset_dashboard", "type": "image", "asset_kind": "carbon_dashboard", "bbox": [1242, 316, 238, 128]},
+
+    {"id": "card10_title", "type": "text", "text": "功能10:\n绿色建筑标准", "bbox": [105, 425, 270, 74], "style": {"font_size": 29, "bold": true, "color": "#000000", "line_spacing": 0.9}},
+    {"id": "card11_title", "type": "text", "text": "功能11:\n员工双碳意识培养", "bbox": [592, 425, 360, 74], "style": {"font_size": 28, "bold": true, "color": "#000000", "line_spacing": 0.9}},
+    {"id": "card12_title", "type": "text", "text": "功能12:\n碳资产管理体系", "bbox": [1082, 425, 360, 74], "style": {"font_size": 28, "bold": true, "color": "#000000", "line_spacing": 0.9}},
+    {"id": "card10_en", "type": "text", "text": "Green Building Standards", "bbox": [106, 499, 280, 22], "style": {"font_size": 13, "color": "#5d6c70"}},
+    {"id": "card11_en", "type": "text", "text": "Employee Carbon Awareness", "bbox": [594, 499, 300, 22], "style": {"font_size": 13, "color": "#5d6c70"}},
+    {"id": "card12_en", "type": "text", "text": "Carbon Asset Management", "bbox": [1084, 499, 300, 22], "style": {"font_size": 13, "color": "#5d6c70"}},
+
+    {"id": "pill10", "type": "rounded_rect", "bbox": [103, 523, 300, 30], "style": {"fill": "#eafffb", "stroke": "#00b99f", "stroke_width": 2}},
+    {"id": "pill11", "type": "rounded_rect", "bbox": [592, 523, 346, 30], "style": {"fill": "#ffffff", "stroke": "#98a9bd", "stroke_width": 2}},
+    {"id": "pill12", "type": "rounded_rect", "bbox": [1082, 523, 386, 30], "style": {"fill": "#fffdf5", "stroke": "#dec17a", "stroke_width": 2}},
+    {"id": "pill10_text", "type": "text", "text": "《绿色工厂评价通则》GB/T 36132", "bbox": [112, 527, 282, 22], "style": {"font_size": 15, "bold": true, "color": "#0e2d36", "align": "center"}},
+    {"id": "pill11_text", "type": "text", "text": "《工业绿色发展规划（2021–2025年）》", "bbox": [604, 527, 322, 22], "style": {"font_size": 15, "bold": true, "color": "#0e2d36", "align": "center"}},
+    {"id": "pill12_text", "type": "text", "text": "《全国碳排放权交易市场管理办法》2024修订", "bbox": [1092, 527, 366, 22], "style": {"font_size": 14, "bold": true, "color": "#0e2d36", "align": "center"}},
+
+    {"id": "bul10", "type": "text", "text": "• 厂房建筑满足绿色建筑二星级及以上标准\n• 外墙、屋顶采用高效隔热保温材料\n• 自然采光与通风设计降低空调能耗\n• LED照明系统全覆盖，智能感应控制\n• 雨水回收与中水利用系统配套建设", "bbox": [102, 570, 385, 138], "style": {"font_size": 15, "bold": true, "color": "#0c171a", "line_spacing": 1.05}},
+    {"id": "bul11", "type": "text", "text": "• 建立全员碳排放知识培训体系\n• 设置岗位碳积分与绿色行为激励机制\n• 定期开展双碳主题内训与外部认证课程\n• 将碳减排纳入员工绩效考核指标\n• 企业内部碳中和文化建设与宣传推广", "bbox": [592, 570, 385, 138], "style": {"font_size": 15, "bold": true, "color": "#0c171a", "line_spacing": 1.05}},
+    {"id": "bul12", "type": "text", "text": "• 建立企业碳账户，实时追踪碳配额与CCER\n• 开展碳资产盘查、评估与战略规划\n• 参与全国碳市场交易，优化碳配额持仓\n• 通过碳抵消项目开发获取额外碳收益\n• 与绿色金融机构对接，实现碳资产融资变现", "bbox": [1082, 570, 388, 138], "style": {"font_size": 14, "bold": true, "color": "#0c171a", "line_spacing": 1.05}},
+
+    {"id": "benefit10", "type": "rounded_rect", "bbox": [102, 720, 376, 62], "style": {"fill": "#d5f5ec", "stroke": "none"}},
+    {"id": "benefit11", "type": "rounded_rect", "bbox": [592, 720, 376, 62], "style": {"fill": "#e5e9f1", "stroke": "none"}},
+    {"id": "benefit12", "type": "rounded_rect", "bbox": [1082, 720, 376, 62], "style": {"fill": "#e2f5e9", "stroke": "none"}},
+    {"id": "benefit10_text", "type": "text", "text": "可获收益：建筑能耗可降低30%–50%，获评绿色建筑可享受地方财政补贴", "bbox": [118, 732, 344, 40], "style": {"font_size": 15, "bold": true, "color": "#0c171a", "line_spacing": 1.0}},
+    {"id": "benefit11_text", "type": "text", "text": "研究显示：系统性意识培养可带动全员行为节能5%–12%", "bbox": [608, 732, 344, 40], "style": {"font_size": 15, "bold": true, "color": "#0c171a", "line_spacing": 1.0}},
+    {"id": "benefit12_text", "type": "text", "text": "碳资产管理得当，企业可年均创收或节约碳成本数百万元至数千万元", "bbox": [1098, 732, 344, 40], "style": {"font_size": 14, "bold": true, "color": "#0c171a", "line_spacing": 1.0}},
+
+    {"id": "footer_bg", "type": "rect", "bbox": [0, 840, 1600, 60], "style": {"fill": "#003464", "stroke": "none"}},
+    {"id": "footer_accent", "type": "rect", "bbox": [850, 840, 750, 60], "style": {"fill": "#009b85", "stroke": "none", "transparency": 20}},
+    {"id": "footer_text", "type": "text", "text": "绿色建筑 · 意识培养 · 碳资产 —— 软硬兼施，系统升级", "bbox": [475, 854, 650, 30], "style": {"font_size": 21, "bold": true, "color": "#2df0d0", "align": "center"}}
+  ]
+}

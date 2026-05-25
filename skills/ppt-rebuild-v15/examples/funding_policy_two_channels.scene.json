@@ -1,0 +1,551 @@
+{
+  "slide_size": [
+    1600,
+    900
+  ],
+  "page_type": "editable_scene",
+  "objects": [
+    {
+      "id": "bg",
+      "type": "rect",
+      "bbox": [
+        0,
+        0,
+        1600,
+        900
+      ],
+      "style": {
+        "fill": "#f7fbf6",
+        "stroke": "none",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "accent",
+      "type": "rect",
+      "bbox": [
+        58,
+        54,
+        12,
+        104
+      ],
+      "style": {
+        "fill": "#00b89c",
+        "stroke": "none",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "text": "国家层面零碳建设资金配套政策",
+      "bbox": [
+        92,
+        60,
+        780,
+        60
+      ],
+      "style": {
+        "font_size": 38,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "text": "政策性金融工具全面护航零碳转型",
+      "bbox": [
+        94,
+        130,
+        650,
+        38
+      ],
+      "style": {
+        "font_size": 27,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "from": [
+        90,
+        180
+      ],
+      "to": [
+        1520,
+        180
+      ],
+      "style": {
+        "stroke": "#80dcca",
+        "stroke_width": 1.2
+      },
+      "z": 3
+    },
+    {
+      "id": "hex0",
+      "type": "hexagon",
+      "bbox": [
+        1270,
+        5,
+        90,
+        72
+      ],
+      "style": {
+        "fill": "transparent",
+        "stroke": "#d5eee8",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "hex1",
+      "type": "hexagon",
+      "bbox": [
+        1360,
+        5,
+        90,
+        72
+      ],
+      "style": {
+        "fill": "transparent",
+        "stroke": "#d5eee8",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "hex2",
+      "type": "hexagon",
+      "bbox": [
+        1450,
+        5,
+        90,
+        72
+      ],
+      "style": {
+        "fill": "transparent",
+        "stroke": "#d5eee8",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "hex3",
+      "type": "hexagon",
+      "bbox": [
+        1320,
+        80,
+        90,
+        72
+      ],
+      "style": {
+        "fill": "transparent",
+        "stroke": "#d5eee8",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "hex4",
+      "type": "hexagon",
+      "bbox": [
+        1410,
+        80,
+        90,
+        72
+      ],
+      "style": {
+        "fill": "transparent",
+        "stroke": "#d5eee8",
+        "stroke_width": 1
+      },
+      "z": 1
+    },
+    {
+      "id": "card1_shadow",
+      "type": "rounded_rect",
+      "bbox": [
+        95,
+        210,
+        690,
+        538
+      ],
+      "style": {
+        "fill": "#bbbbbb",
+        "stroke": "none",
+        "stroke_width": 1,
+        "transparency": 55
+      },
+      "z": 1
+    },
+    {
+      "id": "card2_shadow",
+      "type": "rounded_rect",
+      "bbox": [
+        833,
+        210,
+        690,
+        538
+      ],
+      "style": {
+        "fill": "#bbbbbb",
+        "stroke": "none",
+        "stroke_width": 1,
+        "transparency": 55
+      },
+      "z": 1
+    },
+    {
+      "id": "card1",
+      "type": "rounded_rect",
+      "bbox": [
+        88,
+        204,
+        690,
+        538
+      ],
+      "style": {
+        "fill": "#e3fbf4",
+        "stroke": "#00a890",
+        "stroke_width": 3
+      },
+      "z": 2
+    },
+    {
+      "id": "card2",
+      "type": "rounded_rect",
+      "bbox": [
+        826,
+        204,
+        690,
+        538
+      ],
+      "style": {
+        "fill": "#f4f7ff",
+        "stroke": "#002b69",
+        "stroke_width": 3
+      },
+      "z": 2
+    },
+    {
+      "id": "gov_icon",
+      "type": "image",
+      "asset_kind": "finance_policy_photo1",
+      "bbox": [
+        135,
+        235,
+        110,
+        100
+      ],
+      "z": 4
+    },
+    {
+      "id": "bank_icon",
+      "type": "image",
+      "asset_kind": "finance_policy_photo2",
+      "bbox": [
+        872,
+        238,
+        110,
+        98
+      ],
+      "z": 4
+    },
+    {
+      "id": "ch1",
+      "type": "text",
+      "text": "资金渠道一",
+      "bbox": [
+        270,
+        252,
+        220,
+        34
+      ],
+      "style": {
+        "font_size": 24,
+        "color": "#00bdb6",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "ch1title",
+      "type": "text",
+      "text": "地方政府专项债券",
+      "bbox": [
+        270,
+        300,
+        350,
+        42
+      ],
+      "style": {
+        "font_size": 30,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "ch2",
+      "type": "text",
+      "text": "资金渠道二",
+      "bbox": [
+        1000,
+        252,
+        220,
+        34
+      ],
+      "style": {
+        "font_size": 24,
+        "color": "#00bdb6",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "ch2title",
+      "type": "text",
+      "text": "政策性银行中长期信贷",
+      "bbox": [
+        1000,
+        300,
+        430,
+        42
+      ],
+      "style": {
+        "font_size": 30,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "p1",
+      "type": "text",
+      "text": "依据：《关于开展零碳园区建设的通知》发改环资[2025]910号\n\n支持范围： 零碳园区基础设施、可再生能源系统、能碳管理\n平台建设均可申报专项债资金支持\n\n申报条件： 项目需纳入地方“十五五”重点项目库，通过零碳\n园区建设评估认定\n\n资金规模： 单个零碳园区项目专项债申报规模通常在5,000万\n至 5 亿元区间，视项目体量而定",
+      "bbox": [
+        122,
+        360,
+        610,
+        245
+      ],
+      "style": {
+        "font_size": 15,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.08
+      },
+      "z": 10
+    },
+    {
+      "id": "p2",
+      "type": "text",
+      "text": "依据： 国家发展改革委、国家能源局绿色低碳转型系列政策\n\n主要机构： 国家开发银行、中国农业发展银行、中国进出口\n银行提供优惠绿色信贷\n\n贷款期限： 支持10至20年超长期中长期贷款，匹配零碳建\n设项目回报周期\n\n利率优惠： 执行基准利率下浮，综合融资成本较商业贷款低\n0.5至1.5个百分点，部分项目可叠加贴息补助",
+      "bbox": [
+        862,
+        360,
+        610,
+        245
+      ],
+      "style": {
+        "font_size": 15,
+        "color": "#000000",
+        "bold": true,
+        "align": "left",
+        "line_spacing": 1.08
+      },
+      "z": 10
+    },
+    {
+      "id": "bond_photo",
+      "type": "image",
+      "asset_kind": "finance_policy_photo1",
+      "bbox": [
+        125,
+        632,
+        300,
+        88
+      ],
+      "z": 6
+    },
+    {
+      "id": "meeting_photo",
+      "type": "image",
+      "asset_kind": "finance_policy_photo2",
+      "bbox": [
+        450,
+        632,
+        295,
+        88
+      ],
+      "z": 6
+    },
+    {
+      "id": "bank_photo",
+      "type": "image",
+      "asset_kind": "bank_building",
+      "bbox": [
+        865,
+        632,
+        300,
+        88
+      ],
+      "z": 6
+    },
+    {
+      "id": "contract_photo",
+      "type": "image",
+      "asset_kind": "loan_contract",
+      "bbox": [
+        1192,
+        632,
+        285,
+        88
+      ],
+      "z": 6
+    },
+    {
+      "id": "footerbar",
+      "type": "rounded_rect",
+      "bbox": [
+        88,
+        768,
+        1428,
+        90
+      ],
+      "style": {
+        "fill": "#19385a",
+        "stroke": "#19385a",
+        "stroke_width": 1
+      },
+      "z": 2
+    },
+    {
+      "id": "footaccent",
+      "type": "rounded_rect",
+      "bbox": [
+        88,
+        768,
+        12,
+        90
+      ],
+      "style": {
+        "fill": "#00b89c",
+        "stroke": "none",
+        "stroke_width": 1
+      },
+      "z": 3
+    },
+    {
+      "id": "f1",
+      "type": "text",
+      "text": "▦  专项债支持\n基建投资无偿支持",
+      "bbox": [
+        250,
+        780,
+        300,
+        66
+      ],
+      "style": {
+        "font_size": 20,
+        "color": "#20e3d1",
+        "bold": true,
+        "align": "center",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "fd1",
+      "type": "line",
+      "from": [
+        590,
+        785
+      ],
+      "to": [
+        590,
+        838
+      ],
+      "style": {
+        "stroke": "#6c7890",
+        "stroke_width": 1
+      },
+      "z": 3
+    },
+    {
+      "id": "f2",
+      "type": "text",
+      "text": "▦  政策性信贷\n低息长期融资保障",
+      "bbox": [
+        675,
+        780,
+        330,
+        66
+      ],
+      "style": {
+        "font_size": 20,
+        "color": "#20e3d1",
+        "bold": true,
+        "align": "center",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    },
+    {
+      "id": "fd2",
+      "type": "line",
+      "from": [
+        1025,
+        785
+      ],
+      "to": [
+        1025,
+        838
+      ],
+      "style": {
+        "stroke": "#6c7890",
+        "stroke_width": 1
+      },
+      "z": 3
+    },
+    {
+      "id": "f3",
+      "type": "text",
+      "text": "▣  两项叠加\n综合资金成本大幅降低",
+      "bbox": [
+        1125,
+        780,
+        350,
+        66
+      ],
+      "style": {
+        "font_size": 20,
+        "color": "#20e3d1",
+        "bold": true,
+        "align": "center",
+        "line_spacing": 1.0
+      },
+      "z": 10
+    }
+  ]
+}

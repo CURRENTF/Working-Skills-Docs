@@ -1,0 +1,47 @@
+{
+  "page_type": "climate_paris_agreement_background",
+  "slide_size": [1548, 854],
+  "objects": [
+    {"id": "bg", "type": "rect", "bbox": [0, 0, 1548, 854], "style": {"fill": "#f7fbf7", "stroke": "none"}, "z": 1},
+    {"id": "accent", "type": "rect", "bbox": [68, 55, 12, 66], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 2},
+    {"id": "title", "type": "text", "text": "全球气候危机与《巴黎协定》背景", "bbox": [95, 56, 820, 68], "style": {"font_size": 41, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "rule", "type": "line", "from": [68, 133], "to": [1432, 133], "style": {"stroke": "#84dcca", "stroke_width": 1.2}, "z": 4},
+
+    {"id": "intro_1", "type": "text", "text": "过去100年，地球平均气温已上升约", "bbox": [94, 184, 510, 38], "style": {"font_size": 25, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "intro_num", "type": "text", "text": "1.1℃", "bbox": [602, 179, 96, 40], "style": {"font_size": 30, "bold": true, "color": "#00b89c", "align": "left"}, "z": 20},
+    {"id": "intro_2", "type": "text", "text": "——看似微小，却引发了前所未有的极端气候灾难。", "bbox": [94, 230, 830, 34], "style": {"font_size": 25, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+
+    {"id": "card1", "type": "rounded_rect", "bbox": [90, 300, 292, 94], "style": {"fill": "#f3f4f0", "stroke": "none"}, "z": 5},
+    {"id": "card2", "type": "rounded_rect", "bbox": [400, 300, 292, 94], "style": {"fill": "#f3f4f0", "stroke": "none"}, "z": 5},
+    {"id": "card3", "type": "rounded_rect", "bbox": [712, 300, 292, 94], "style": {"fill": "#f3f4f0", "stroke": "none"}, "z": 5},
+    {"id": "card1_top", "type": "rect", "bbox": [90, 300, 292, 8], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 6},
+    {"id": "card2_top", "type": "rect", "bbox": [400, 300, 292, 8], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 6},
+    {"id": "card3_top", "type": "rect", "bbox": [712, 300, 292, 8], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 6},
+    {"id": "flood_icon", "type": "image", "bbox": [116, 331, 48, 44], "z": 8},
+    {"id": "heat_icon", "type": "image", "bbox": [426, 331, 48, 44], "z": 8},
+    {"id": "ice_icon", "type": "image", "bbox": [742, 331, 48, 44], "z": 8},
+    {"id": "flood_title", "type": "text", "text": "极端洪涝", "bbox": [172, 333, 170, 36], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "heat_title", "type": "text", "text": "超强热浪", "bbox": [474, 333, 185, 36], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "ice_title", "type": "text", "text": "冰川消融", "bbox": [800, 333, 170, 36], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "flood_sub", "type": "text", "text": "频率较工业化前增加约5倍", "bbox": [100, 386, 280, 30], "style": {"font_size": 18, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "heat_sub", "type": "text", "text": "全球高温天数持续创历史纪录", "bbox": [400, 386, 292, 30], "style": {"font_size": 18, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "ice_sub", "type": "text", "text": "海平面每年上升约3.7毫米", "bbox": [712, 386, 292, 30], "style": {"font_size": 18, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+
+    {"id": "goal_panel", "type": "rounded_rect", "bbox": [88, 464, 918, 188], "style": {"fill": "#dff7f2", "stroke": "none"}, "z": 5},
+    {"id": "goal_accent", "type": "rect", "bbox": [89, 465, 12, 188], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 6},
+    {"id": "goal_badge", "type": "rounded_rect", "bbox": [120, 486, 372, 34], "style": {"fill": "#eefefa", "stroke": "none"}, "z": 6},
+    {"id": "goal_badge_t", "type": "text", "text": "《巴黎协定》核心目标 • 2015年通过", "bbox": [140, 491, 405, 26], "style": {"font_size": 19, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "goal_main", "type": "text", "text": "将全球平均气温升幅控制在工业化前水平以上 1.5℃ 之内\n并努力将升温限制在2℃以内，以避免气候变化最严重的影响。", "bbox": [130, 548, 875, 82], "style": {"font_size": 27, "bold": true, "color": "#000a5c", "align": "left", "line_spacing": 1.05}, "z": 20},
+    {"id": "goal_note", "type": "text", "text": "*195个缔约方签署，于2016年11月正式生效", "bbox": [130, 636, 570, 30], "style": {"font_size": 20, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+
+    {"id": "right_photo_panel", "type": "rounded_rect", "bbox": [1046, 166, 424, 628], "style": {"fill": "#ffffff", "stroke": "#d8e4e1", "stroke_width": 1.2}, "z": 4},
+    {"id": "photo_collage", "type": "image", "bbox": [1058, 182, 396, 594], "z": 8},
+    {"id": "caption", "type": "text", "text": "《巴黎协定》于2015年12月在巴黎气候大会（COP21）上通过", "bbox": [1015, 812, 525, 26], "style": {"font_size": 15, "bold": false, "color": "#7a7a7a", "align": "left"}, "z": 20},
+
+    {"id": "stat1", "type": "text", "text": "140+ 个国家", "bbox": [126, 718, 260, 44], "style": {"font_size": 35, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "stat1_sub", "type": "text", "text": "提出碳中和目标", "bbox": [130, 776, 260, 34], "style": {"font_size": 24, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "divider", "type": "line", "from": [454, 718], "to": [454, 800], "style": {"stroke": "#d1d6d6", "stroke_width": 1.2}, "z": 6},
+    {"id": "stat2", "type": "text", "text": "88% 全球排放量", "bbox": [542, 718, 360, 44], "style": {"font_size": 35, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "stat2_sub", "type": "text", "text": "已纳入碳中和承诺覆盖范围", "bbox": [546, 776, 430, 34], "style": {"font_size": 24, "bold": false, "color": "#000a5c", "align": "left"}, "z": 20}
+  ]
+}

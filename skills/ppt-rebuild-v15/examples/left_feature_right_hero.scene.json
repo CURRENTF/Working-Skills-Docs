@@ -1,0 +1,8 @@
+{
+  "slide_size": [1600, 900],
+  "page_type": "left_feature_right_hero",
+  "objects": [
+    {"id":"title","type":"text","text":"零碳园区建设实现路径：第二步 监测计量","bbox":[70,40,950,60],"style":{"font_size":28,"bold":true,"color":"#0f236b"}},
+    {"id":"label","type":"text","text":"实时感知 精准计量","bbox":[80,195,260,45],"style":{"font_size":22,"bold":true,"color":"#00ab91"}}
+  ]
+}

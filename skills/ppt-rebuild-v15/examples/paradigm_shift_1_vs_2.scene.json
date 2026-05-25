@@ -1,0 +1,60 @@
+{
+  "page_type": "paradigm_shift_1_vs_2",
+  "slide_size": [1520, 850],
+  "objects": [
+    {"id": "bg", "type": "rect", "bbox": [0, 0, 1520, 850], "style": {"fill": "#fbfdff", "stroke": "none"}, "z": 1},
+    {"id": "left_tint", "type": "rect", "bbox": [0, 0, 740, 850], "style": {"fill": "#f2f8ff", "stroke": "none"}, "z": 2},
+    {"id": "bottom_left_tint", "type": "rect", "bbox": [0, 670, 740, 180], "style": {"fill": "#eef7ff", "stroke": "none"}, "z": 2},
+    {"id": "center_glow", "type": "rect", "bbox": [737, 0, 7, 850], "style": {"fill": "#d7edff", "stroke": "none"}, "z": 3},
+    {"id": "center_line", "type": "line", "from": [741, 0], "to": [741, 850], "style": {"stroke": "#d2e6f7", "stroke_width": 1.2}, "z": 4},
+
+    {"id": "title", "type": "text", "text": "跨越拐点：1.0 与 2.0 的范式革新", "bbox": [403, 70, 720, 58], "style": {"font_size": 37, "bold": true, "color": "#000000", "align": "center"}, "z": 30},
+    {"id": "subtitle", "type": "text", "text": "PARADIGM SHIFT: 1.0 VS 2.0", "bbox": [578, 134, 365, 34], "style": {"font_size": 23, "bold": false, "color": "#222222", "align": "center"}, "z": 30},
+
+    {"id": "left_rule_1", "type": "line", "from": [62, 232], "to": [724, 232], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+    {"id": "left_rule_2", "type": "line", "from": [62, 426], "to": [724, 426], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+    {"id": "left_rule_3", "type": "line", "from": [62, 623], "to": [724, 623], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+    {"id": "right_rule_1", "type": "line", "from": [758, 232], "to": [1430, 232], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+    {"id": "right_rule_2", "type": "line", "from": [758, 426], "to": [1430, 426], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+    {"id": "right_rule_3", "type": "line", "from": [758, 623], "to": [1430, 623], "style": {"stroke": "#dce7ef", "stroke_width": 1}, "z": 5},
+
+    {"id": "left_badge_1", "type": "rounded_rect", "bbox": [184, 214, 370, 39], "style": {"fill": "#d6d8e1", "stroke": "none"}, "z": 8},
+    {"id": "left_badge_2", "type": "rounded_rect", "bbox": [184, 411, 370, 39], "style": {"fill": "#d6d8e1", "stroke": "none"}, "z": 8},
+    {"id": "left_badge_3", "type": "rounded_rect", "bbox": [184, 609, 370, 39], "style": {"fill": "#d6d8e1", "stroke": "none"}, "z": 8},
+    {"id": "right_badge_1", "type": "rounded_rect", "bbox": [924, 214, 372, 42], "style": {"fill": "#0689e8", "stroke": "none"}, "z": 8},
+    {"id": "right_badge_2", "type": "rounded_rect", "bbox": [924, 411, 372, 42], "style": {"fill": "#0689e8", "stroke": "none"}, "z": 8},
+    {"id": "right_badge_3", "type": "rounded_rect", "bbox": [924, 609, 372, 42], "style": {"fill": "#0689e8", "stroke": "none"}, "z": 8},
+
+    {"id": "left_badge_t_1", "type": "text", "text": "管理对象：从传统IT资源到智力要素", "bbox": [193, 222, 355, 27], "style": {"font_size": 17, "bold": true, "color": "#111111", "align": "center"}, "z": 30},
+    {"id": "left_badge_t_2", "type": "text", "text": "工作方式：从人工探查到机器智能", "bbox": [199, 419, 342, 27], "style": {"font_size": 17, "bold": true, "color": "#111111", "align": "center"}, "z": 30},
+    {"id": "left_badge_t_3", "type": "text", "text": "核心定位：从存储仓库到执行引擎", "bbox": [199, 617, 342, 27], "style": {"font_size": 17, "bold": true, "color": "#111111", "align": "center"}, "z": 30},
+    {"id": "right_badge_t_1", "type": "text", "text": "管理对象：从传统IT资源到智力要素", "bbox": [932, 222, 356, 28], "style": {"font_size": 17, "bold": true, "color": "#ffffff", "align": "center"}, "z": 30},
+    {"id": "right_badge_t_2", "type": "text", "text": "工作方式：从人工探查到机器智能", "bbox": [940, 419, 340, 28], "style": {"font_size": 17, "bold": true, "color": "#ffffff", "align": "center"}, "z": 30},
+    {"id": "right_badge_t_3", "type": "text", "text": "核心定位：从存储仓库到执行引擎", "bbox": [940, 617, 340, 28], "style": {"font_size": 17, "bold": true, "color": "#ffffff", "align": "center"}, "z": 30},
+
+    {"id": "arrow_1", "type": "arrow", "bbox": [641, 305, 166, 44], "style": {"fill": "#b7d8ff", "stroke": "none", "transparency": 48}, "z": 10},
+    {"id": "arrow_2", "type": "arrow", "bbox": [641, 501, 166, 44], "style": {"fill": "#b7d8ff", "stroke": "none", "transparency": 48}, "z": 10},
+    {"id": "arrow_3", "type": "arrow", "bbox": [641, 698, 166, 44], "style": {"fill": "#b7d8ff", "stroke": "none", "transparency": 48}, "z": 10},
+
+    {"id": "left_icon_1", "type": "image", "bbox": [182, 272, 130, 102], "z": 12},
+    {"id": "left_icon_2", "type": "image", "bbox": [190, 478, 108, 92], "z": 12},
+    {"id": "left_icon_3", "type": "image", "bbox": [181, 686, 130, 82], "z": 12},
+    {"id": "right_icon_1", "type": "image", "bbox": [878, 270, 174, 112], "z": 12},
+    {"id": "right_icon_2", "type": "image", "bbox": [883, 465, 154, 122], "z": 12},
+    {"id": "right_icon_3", "type": "image", "bbox": [884, 659, 164, 122], "z": 12},
+
+    {"id": "left_num_1", "type": "text", "text": "1.0", "bbox": [346, 286, 74, 36], "style": {"font_size": 27, "bold": true, "color": "#333333", "align": "left"}, "z": 30},
+    {"id": "left_desc_1", "type": "text", "text": "聚焦应用、结构化数据、云主机\n等传统数字资源", "bbox": [346, 322, 330, 58], "style": {"font_size": 18, "bold": true, "color": "#111111", "align": "left", "line_spacing": 1.08}, "z": 30},
+    {"id": "left_num_2", "type": "text", "text": "1.0", "bbox": [346, 486, 74, 36], "style": {"font_size": 27, "bold": true, "color": "#333333", "align": "left"}, "z": 30},
+    {"id": "left_desc_2", "type": "text", "text": "依赖人工手动探查与表单填写", "bbox": [346, 523, 320, 34], "style": {"font_size": 19, "bold": true, "color": "#111111", "align": "left"}, "z": 30},
+    {"id": "left_num_3", "type": "text", "text": "1.0", "bbox": [346, 684, 74, 36], "style": {"font_size": 27, "bold": true, "color": "#333333", "align": "left"}, "z": 30},
+    {"id": "left_desc_3", "type": "text", "text": "定位于归集家底的“资源仓库”", "bbox": [346, 721, 350, 34], "style": {"font_size": 19, "bold": true, "color": "#111111", "align": "left"}, "z": 30},
+
+    {"id": "right_num_1", "type": "text", "text": "2.0", "bbox": [1088, 286, 82, 32], "style": {"font_size": 28, "bold": true, "color": "#008ce8", "align": "left"}, "z": 30},
+    {"id": "right_desc_1", "type": "text", "text": "全面纳管算力、模型、高质量数据集、\n智能组件和智能体等新型智能要素，实\n现全要素感知。", "bbox": [1088, 325, 390, 82], "style": {"font_size": 19, "bold": true, "color": "#111111", "align": "left", "line_spacing": 1.04}, "z": 30},
+    {"id": "right_num_2", "type": "text", "text": "2.0", "bbox": [1088, 486, 82, 38], "style": {"font_size": 28, "bold": true, "color": "#008ce8", "align": "left"}, "z": 30},
+    {"id": "right_desc_2", "type": "text", "text": "转型为 LLM 驱动的长文档解析、自动\n预审与治理规则的自动派发执行。", "bbox": [1088, 523, 390, 58], "style": {"font_size": 19, "bold": true, "color": "#111111", "align": "left", "line_spacing": 1.04}, "z": 30},
+    {"id": "right_num_3", "type": "text", "text": "2.0", "bbox": [1088, 684, 82, 38], "style": {"font_size": 28, "bold": true, "color": "#008ce8", "align": "left"}, "z": 30},
+    {"id": "right_desc_3", "type": "text", "text": "进阶为驱动业务自动流转、能力即时\n交付、治理闭环的“智能引擎”。", "bbox": [1088, 721, 390, 58], "style": {"font_size": 19, "bold": true, "color": "#111111", "align": "left", "line_spacing": 1.04}, "z": 30}
+  ]
+}

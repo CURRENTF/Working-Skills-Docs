@@ -1,0 +1,8 @@
+{
+  "slide_size": [1600, 900],
+  "page_type": "three_card_energy",
+  "objects": [
+    {"id":"title","type":"text","text":"零碳园区建设实现路径：第四步 绿色能源建设","bbox":[70,40,950,60],"style":{"font_size":28,"bold":true,"color":"#0f236b"}},
+    {"id":"subtitle","type":"text","text":"推动光伏、电网侧储能、生物质能多元耦合，提升园区零碳基荷比例","bbox":[90,145,1150,45],"style":{"font_size":22,"bold":true,"color":"#0f236b"}}
+  ]
+}

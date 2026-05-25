@@ -1,0 +1,45 @@
+{
+  "page_type": "eu_dual_carbon_origin_strategy",
+  "slide_size": [1540, 860],
+  "objects": [
+    {"id": "bg", "type": "rect", "bbox": [0, 0, 1540, 860], "style": {"fill": "#f7fbf8", "stroke": "none"}, "z": 1},
+    {"id": "accent", "type": "rect", "bbox": [50, 28, 14, 103], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 2},
+    {"id": "title", "type": "text", "text": "欧美国家的双碳溯源与战略意图", "bbox": [84, 40, 720, 58], "style": {"font_size": 38, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "subtitle", "type": "text", "text": "绿色转型背后的产业链重构与话语权争夺", "bbox": [85, 102, 820, 40], "style": {"font_size": 29, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "rule", "type": "line", "from": [84, 142], "to": [1438, 142], "style": {"stroke": "#4bd4c2", "stroke_width": 1.2}, "z": 4},
+
+    {"id": "hex0", "type": "hexagon", "bbox": [1248, 0, 90, 72], "style": {"fill": "transparent", "stroke": "#d6eee8", "stroke_width": 1}, "z": 1},
+    {"id": "hex1", "type": "hexagon", "bbox": [1338, 0, 90, 72], "style": {"fill": "transparent", "stroke": "#d6eee8", "stroke_width": 1}, "z": 1},
+    {"id": "hex2", "type": "hexagon", "bbox": [1288, 75, 90, 72], "style": {"fill": "transparent", "stroke": "#d6eee8", "stroke_width": 1}, "z": 1},
+    {"id": "hex3", "type": "hexagon", "bbox": [1378, 75, 90, 72], "style": {"fill": "transparent", "stroke": "#d6eee8", "stroke_width": 1}, "z": 1},
+
+    {"id": "card1_shadow", "type": "rounded_rect", "bbox": [86, 192, 706, 162], "style": {"fill": "#c9c9c9", "stroke": "none", "transparency": 62}, "z": 3},
+    {"id": "card2_shadow", "type": "rounded_rect", "bbox": [86, 388, 706, 162], "style": {"fill": "#c9c9c9", "stroke": "none", "transparency": 62}, "z": 3},
+    {"id": "card3_shadow", "type": "rounded_rect", "bbox": [86, 580, 706, 162], "style": {"fill": "#c9c9c9", "stroke": "none", "transparency": 62}, "z": 3},
+    {"id": "card1", "type": "rounded_rect", "bbox": [70, 186, 720, 166], "style": {"fill": "#f0f1ee", "stroke": "none"}, "z": 4},
+    {"id": "card2", "type": "rounded_rect", "bbox": [70, 380, 720, 166], "style": {"fill": "#f0f1ee", "stroke": "none"}, "z": 4},
+    {"id": "card3", "type": "rounded_rect", "bbox": [70, 572, 720, 166], "style": {"fill": "#f0f1ee", "stroke": "none"}, "z": 4},
+    {"id": "card1_bar", "type": "rect", "bbox": [70, 187, 12, 166], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 5},
+    {"id": "card2_bar", "type": "rect", "bbox": [70, 381, 12, 166], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 5},
+    {"id": "card3_bar", "type": "rect", "bbox": [70, 573, 12, 166], "style": {"fill": "#00b89c", "stroke": "none"}, "z": 5},
+    {"id": "icon1", "type": "image", "bbox": [126, 236, 72, 72], "z": 8},
+    {"id": "icon2", "type": "image", "bbox": [126, 432, 72, 72], "z": 8},
+    {"id": "icon3", "type": "image", "bbox": [126, 623, 72, 72], "z": 8},
+
+    {"id": "card1_title", "type": "text", "text": "重塑全球产业链规则", "bbox": [218, 206, 430, 40], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "card1_body", "type": "text", "text": "欧盟率先将气候目标法律化，通过《欧洲绿色协议》将碳减排与贸易准入深度绑定，迫使全球供应链按欧洲标准重构。", "bbox": [218, 258, 535, 84], "style": {"font_size": 24, "bold": true, "color": "#000000", "align": "left", "line_spacing": 1.12}, "z": 20},
+    {"id": "card2_title", "type": "text", "text": "构筑绿色技术壁垒", "bbox": [218, 400, 430, 40], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "card2_body", "type": "text", "text": "美欧通过大规模补贴本土清洁能源产业（《通胀削减法案》IRA投入3,690亿美元），抢占光伏、氢能、储能等核心技术专利高地。", "bbox": [218, 452, 535, 84], "style": {"font_size": 23, "bold": true, "color": "#000000", "align": "left", "line_spacing": 1.12}, "z": 20},
+    {"id": "card3_title", "type": "text", "text": "掌握国际定价话语权", "bbox": [218, 594, 430, 40], "style": {"font_size": 28, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "card3_body", "type": "text", "text": "主导ISO、GHG Protocol等国际碳核算标准的制定，将本国技术路线输出为全球通行规则，使发展中国家长期处于规则接受方位置。", "bbox": [218, 646, 545, 84], "style": {"font_size": 23, "bold": true, "color": "#000000", "align": "left", "line_spacing": 1.12}, "z": 20},
+
+    {"id": "photo_frame", "type": "rounded_rect", "bbox": [846, 186, 625, 486], "style": {"fill": "#e6fff7", "stroke": "#00a890", "stroke_width": 2}, "z": 4},
+    {"id": "eu_photo", "type": "image", "bbox": [864, 204, 588, 450], "z": 8},
+    {"id": "photo_caption", "type": "text", "text": "欧盟《欧洲绿色协议》——全球最激进的气候立法框架", "bbox": [862, 698, 600, 34], "style": {"font_size": 20, "bold": true, "italic": true, "color": "#8b8b8b", "align": "center"}, "z": 20},
+
+    {"id": "bottom_panel", "type": "rounded_rect", "bbox": [70, 776, 1398, 60], "style": {"fill": "#dff7f2", "stroke": "none"}, "z": 5},
+    {"id": "bottom_text_a", "type": "text", "text": "双碳目标本质上是一场以气候为名的国际竞争 —— ", "bbox": [226, 796, 715, 32], "style": {"font_size": 26, "bold": true, "color": "#000a5c", "align": "left"}, "z": 20},
+    {"id": "bottom_text_b", "type": "text", "text": "规则制定者永远占据价值链顶端", "bbox": [942, 796, 440, 32], "style": {"font_size": 26, "bold": true, "color": "#ff0000", "align": "left"}, "z": 20},
+    {"id": "bottom_icon", "type": "image", "bbox": [192, 794, 30, 32], "z": 8}
+  ]
+}
