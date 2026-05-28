@@ -6,6 +6,10 @@ This directory stores human-readable documentation for skills in this repo.
 
 - [AutoDL Remote Debug Cheatsheet](autodl-remote-debug/cheatsheet.md)
 
+## PDF Chinese Annotations
+
+- Skill: `skills/annotate-pdf-zh/SKILL.md`
+
 ## General Coding
 
 - [Research Code Rules](general-coding/research-code-rules.md)

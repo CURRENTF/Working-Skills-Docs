@@ -1,0 +1,4 @@
+interface:
+  display_name: "PDF Chinese Annotations"
+  short_description: "Translate PDFs into Chinese annotations while preserving layout."
+  default_prompt: "Translate this text-based PDF into Simplified Chinese comments, preserving the original PDF layout."
