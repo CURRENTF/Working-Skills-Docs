@@ -1,0 +1,4 @@
+interface:
+  display_name: "周期性远程检查"
+  short_description: "按固定周期 SSH 检查实验 loss、日志、checkpoint 与异常状态"
+  default_prompt: "Use $periodic-remote-check to keep a Codex request alive while polling a remote training job over SSH and summarizing loss, progress, and anomalies on a fixed cadence."

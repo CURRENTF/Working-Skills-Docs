@@ -15,6 +15,10 @@ description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服
 - 确定环境后，用 `conda activate <ENV_NAME>`，或用 `/root/miniconda3/bin/conda run -n <ENV_NAME> --no-capture-output <cmd>` 运行命令。
 - SSH 连接信息以 AutoDL/GPUHub 页面显示为准，端口可能变化。
 - 写长指令时，把命令写到 `scripts/tmp/*.sh` 后执行，避免复杂引号转义出错；确认 `scripts/tmp/` 被 `.gitignore` 忽略，防止临时脚本被误提交或上传。
+- 不要把长实验直接写成 `ssh ... 'tmux new-session "... python ... --hyper_params {json} ..."'`。先在远端 repo 写好 quote-safe launcher，再用 SSH 只启动 `bash scripts/tmp/<run>.sh`。
+- JSON/hparams 不要 inline 在 shell 命令里；在 launcher 里写 `hparams.json` 或 config 文件。需要生成 JSON 时优先使用单引号 heredoc（例如 `<<'PY'`），避免 `$VAR`、反斜杠和引号被 shell 误展开。
+- 每次启动远端实验前显式打印并记录 `hostname`、`pwd`、`git rev-parse HEAD`、`git status --short`、`nvidia-smi`，避免本地/远端或错误 GPU 混淆。
+- 失败、手动 abort、被 supersede 的 workaround run 也要写入 `status.tsv` 或实验文档；不要把这类 partial artifact 混入主结果表。
 
 ## 常用检查
 
@@ -46,4 +50,11 @@ source /etc/network_turbo
 mkdir -p scripts/tmp
 $EDITOR scripts/tmp/run_task.sh
 bash scripts/tmp/run_task.sh
+```
+
+远端 tmux 启动时保持外层命令短：
+
+```bash
+ssh -p <port> root@<host> \
+  'cd /root/autodl-tmp/<repo> && tmux new-session -d -s <session> "RUN_TAG=<tag> bash scripts/tmp/run_task.sh; echo EXIT_CODE=\$?; sleep 300"'
 ```
