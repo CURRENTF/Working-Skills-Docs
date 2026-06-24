@@ -19,6 +19,7 @@ description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服
 - JSON/hparams 不要 inline 在 shell 命令里；在 launcher 里写 `hparams.json` 或 config 文件。需要生成 JSON 时优先使用单引号 heredoc（例如 `<<'PY'`），避免 `$VAR`、反斜杠和引号被 shell 误展开。
 - 每次启动远端实验前显式打印并记录 `hostname`、`pwd`、`git rev-parse HEAD`、`git status --short`、`nvidia-smi`，避免本地/远端或错误 GPU 混淆。
 - 失败、手动 abort、被 supersede 的 workaround run 也要写入 `status.tsv` 或实验文档；不要把这类 partial artifact 混入主结果表。
+- 涉及实验、评测、远程服务或排障记录时，同时应用 `$experiment-run-docs` 或 `$repo-ops-docs`。这些 dated records 优先写入 LeafWiki research vault；repo `docs/` 只保留稳定 runbook、复现实验说明或没有 vault 凭据时的兜底记录。
 
 ## 常用检查
 

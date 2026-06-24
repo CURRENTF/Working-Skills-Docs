@@ -52,6 +52,7 @@ Read `references/run-modes.md` only when the user needs examples for background 
 - Lead with the current status: progressing, stalled, failed, or ambiguous.
 - Include the newest extracted metrics, last update time, and anomalies such as `nan`, OOM, traceback, or no output change across checks.
 - Reference the newest raw log file when the user needs detail.
+- If the watcher is monitoring an experiment run or benchmark, hand the status change to `$experiment-run-docs` so the LeafWiki research vault or fallback repo docs record the launch, progress, completion, or failure.
 
 ## Probe Recipes
 
