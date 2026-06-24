@@ -1,4 +1,4 @@
 interface:
   display_name: "Repo Ops Docs"
   short_description: "Capture repo runbooks, servers, datasets, and ops lessons"
-  default_prompt: "Use $repo-ops-docs to document this repo's training/data-generation/server startup workflows and promote reusable operational patterns to Working-Skills-Docs when appropriate."
+  default_prompt: "Use $repo-ops-docs to document training/data-generation/server startup workflows. Keep stable current runbooks in repo docs, put dated operational history in the LeafWiki research vault when available, and promote reusable patterns to Working-Skills-Docs when appropriate."

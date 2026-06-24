@@ -17,6 +17,7 @@ This directory stores human-readable documentation for skills in this repo.
 ## Experiment Run Docs
 
 - Skill: `skills/experiment-run-docs/SKILL.md`
+- Reference: `skills/experiment-run-docs/references/leafwiki-research-api.md`
 
 ## Goal Draft Review
 

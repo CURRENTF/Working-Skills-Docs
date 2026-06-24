@@ -5,6 +5,9 @@ Use this guide for non-code knowledge that makes a repo runnable: training servi
 ## Placement
 
 - Project-specific details belong in that project repo under `docs/`.
+- Dated operational observations, failed attempts, one-off server state, and
+  cross-project context can go to the shared LeafWiki research vault when
+  credentials are available.
 - Reusable procedures belong in `Working-Skills-Docs/docs/`.
 - If a workflow is both project-specific and reusable, keep exact commands in the project repo and keep the generalized pattern here.
 - Keep public docs and historical notes separate. Stable setup, architecture,
