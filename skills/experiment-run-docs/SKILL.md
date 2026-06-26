@@ -25,6 +25,7 @@ curl -fsS "${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}/api/research/
 
 - Create or reuse an experiment record with `POST /api/research/experiments`. Use a human-readable `slugHint`; the server generates and de-duplicates the canonical ID. Put run root, config path, command identity, or result path in `fingerprint` so retries can be matched safely.
 - Update the same record with `/events`, `/status`, and `/results` as the run starts, progresses, finishes, fails, or is superseded.
+- Use `/api/research/docs/tree?project=...&kind=page` to browse the project document hierarchy before search/read when the relevant path is unknown.
 - Use `/api/research/docs/read?path=...` to read full Markdown only after search returns a relevant path.
 - For exact endpoint shapes, curl examples, and response fields, read `references/leafwiki-research-api.md` before calling or changing the LeafWiki API.
 

@@ -37,6 +37,15 @@ curl -fsS "${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}/api/research/
   -H "X-Research-Password: $LEAFWIKI_RESEARCH_API_PASSWORD"
 ```
 
+Browse the project document hierarchy:
+
+```bash
+curl -fsS "${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}/api/research/docs/tree?project=<project>&kind=page" \
+  -H "X-Research-Password: $LEAFWIKI_RESEARCH_API_PASSWORD"
+```
+
+`docs/tree` returns `project`, `kind`, `count`, and a recursive `tree`. `count` is the number of nodes that match the requested filters; ancestor sections are still included in `tree` so paths remain navigable. Each node includes `id`, `path`, `title`, `slug`, `kind`, `position`, optional research metadata (`project`, `researchId`, `researchKind`, `status`, `tags`), timestamps, and `children`.
+
 ## Create Or Reuse An Experiment
 
 Use a human-readable `slugHint`; the server canonicalizes and de-duplicates the final experiment id. Put stable run identity in `fingerprint` so retries can safely reuse the same record.
