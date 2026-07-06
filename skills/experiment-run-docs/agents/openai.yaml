@@ -1,4 +1,4 @@
 interface:
   display_name: "Experiment Run Docs"
-  short_description: "Record experiments in LeafWiki or repo docs fallback"
-  default_prompt: "Use $experiment-run-docs after running or analyzing experiments to document the command, config, data, model/checkpoints, results, artifacts, and logs. Prefer the LeafWiki research vault when available; use repo docs for stable runbooks or fallback."
+  short_description: "Record dated experiment runs in LeafWiki"
+  default_prompt: "Use $experiment-run-docs after running or analyzing experiments to document command, config, data, model/checkpoints, results, artifacts, and logs in LeafWiki by default; update repo docs only for stable runbooks, architecture, parameter semantics, or explicit user-requested fallback notes."

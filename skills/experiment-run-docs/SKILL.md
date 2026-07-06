@@ -1,11 +1,20 @@
 ---
 name: experiment-run-docs
-description: Experiment run documentation rules. Use when Codex runs, resumes, evaluates, benchmarks, or analyzes ML/research experiments and must record what experiment was run, command/config, hyperparameters, data and splits, model and checkpoints, code version, artifacts, final metrics/results, failure status, and corresponding logs, preferring the LeafWiki research vault when available and repo docs as fallback or stable runbook material.
+description: Experiment run documentation rules. Use when Codex runs, resumes, evaluates, benchmarks, or analyzes ML/research experiments and must record what experiment was run, command/config, hyperparameters, data and splits, model and checkpoints, code version, artifacts, final metrics/results, failure status, and corresponding logs. Dated run records go to LeafWiki by default; repo docs are only for stable repo-local runbooks, architecture, parameter semantics, or explicit user-requested fallback notes.
 ---
 
 # Experiment Run Docs
 
-Use this skill to make every experiment auditable after Codex runs or analyzes it. Prefer recording dated run history in the LeafWiki research vault when it is reachable; use repo `docs/` for stable runbooks, reproducibility notes, paper-facing summaries, or fallback when the vault is unavailable.
+Use this skill to make every experiment auditable after Codex runs or analyzes it. Record dated run history in the LeafWiki research vault by default. Use repo `docs/` only for stable runbooks, reproducibility instructions, architecture or parameter semantics, public paper-facing summaries, or a repo-local fallback the user explicitly requested.
+
+## Placement Boundary
+
+- Put dated experiment runs, failed attempts, transient machine state, exact local paths, GPU occupancy, private project history, and raw benchmark/profiling records in LeafWiki.
+- Do not append chronological run logs, one-off result tables, local output roots, failed attempt notes, or "what changed today" implementation history to repo `docs/` unless the user explicitly asks for a repo-local record.
+- Repo docs may be updated when the content is stable and useful to future repo readers without private context: setup, launch/verify commands, reproducibility instructions, architecture, configuration/parameter semantics, or concise public benchmark summaries.
+- If a code change needs a repo-doc update, write the current stable behavior in present tense. Keep dated evidence and private artifact paths in LeafWiki or the run output directory.
+- Do not commit LeafWiki ids, paths, private links, or private index tables into repo docs unless the user explicitly asks for an internal/private repo index.
+- If LeafWiki cannot be reached or credentials are missing, do not create a new repo experiment log as an automatic fallback. Preserve auditability with the run's output-root manifest/logs and say in the final response that no LeafWiki record was written; ask before adding a repo-local fallback note.
 
 ## LeafWiki Research Vault
 
@@ -34,10 +43,10 @@ curl -fsS "${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}/api/research/
 1. Before finishing the user turn, identify every experiment run, resumed run, evaluation, benchmark, or analysis performed in this session.
 2. Inspect the actual command, config, logs, result files, checkpoint directories, and terminal output that support the record.
 3. If LeafWiki is reachable and credentials are available, search for an existing experiment/context page, then create or update the vault record. Keep the returned `id` and `path` in your working notes and final response.
-4. If LeafWiki is unavailable, update an existing experiment doc if one exists, preferring `docs/dev-notes/experiment-records.md` or a topic-specific file under `docs/dev-notes/` when the repo separates stable docs from historical records.
-5. If no suitable fallback doc exists, create `docs/dev-notes/experiment-records.md` when the repo has a substantial public `docs/` tree; otherwise create `docs/experiments.md`. If the repo has `docs/README.md`, add the experiment doc under a "Development Notes" or "Historical Records" section, not before stable setup/architecture/reproducibility docs.
-6. Add one entry per distinct run or variant. Use stable run names, timestamps, or log/checkpoint directory names so entries can be matched back to artifacts.
-7. After a long-running job is launched but before it finishes, record a `running` entry with the command, working directory, PID/session if available, expected outputs, and log path. Update the same entry after completion.
+4. If LeafWiki is unavailable or credentials are missing, keep the experiment record in the run output directory when possible, for example `run_manifest.md`, `status.tsv`, `hparams.json`, or the launcher log. Do not write a repo-local experiment record unless the user explicitly asks for one.
+5. Add one LeafWiki entry per distinct run or variant. Use stable run names, run roots, result paths, config paths, or log/checkpoint directories so retries and resumed runs can be matched back to artifacts.
+6. After a long-running job is launched but before it finishes, record a `running` event in LeafWiki when available, or ensure the output root has a durable status file. Update the same record after completion.
+7. Separately decide whether the repo docs need a stable update. If yes, keep it short, present-tense, and free of dated local run history; put detailed evidence in LeafWiki or artifacts.
 
 ## Required Fields
 
@@ -63,7 +72,7 @@ Include the fields that apply. Write `TBD` or `not captured` instead of inventin
 - For multiple variants, use a table that maps run id to command/config, log path, checkpoint path, and final result.
 - Do not paste large logs into docs. Summarize the relevant lines and link or path to the full log.
 - Redact secrets, tokens, private URLs, and credentials from recorded commands and logs.
-- Keep exact run records, failed attempts, and dated implementation context out of the main public docs flow when possible. Stable docs should link to historical records rather than embed long chronological change logs.
+- Keep exact run records, failed attempts, and dated implementation context out of repo docs by default. Stable repo docs should describe current behavior rather than embed long chronological change logs.
 
 ## Suggested Entry Template
 
@@ -91,4 +100,4 @@ Include the fields that apply. Write `TBD` or `not captured` instead of inventin
 
 ## Final Response
 
-When the user asked Codex to run or analyze experiments, mention the LeafWiki experiment id/path or repo doc path updated and the key log/result paths in the final response. If no record was updated because no experiment actually ran, no artifacts were produced, or credentials were unavailable, say that explicitly.
+When the user asked Codex to run or analyze experiments, mention the LeafWiki experiment id/path updated and the key log/result paths in the final response. If LeafWiki was unavailable or credentials were missing, say no LeafWiki record was written and point to the output-root manifest/logs instead. Mention a repo doc path only when a stable repo doc was intentionally updated or the user explicitly requested a repo-local fallback note.
