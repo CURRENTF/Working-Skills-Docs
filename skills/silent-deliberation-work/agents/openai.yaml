@@ -1,0 +1,4 @@
+interface:
+  display_name: "静默沉思工作"
+  short_description: "Quiet reasoning rules for guarantee-heavy tasks"
+  default_prompt: "Use $silent-deliberation-work to solve this guarantee-heavy reasoning task silently and prove both sufficiency and lower bound."
