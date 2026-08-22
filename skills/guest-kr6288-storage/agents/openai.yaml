@@ -1,4 +1,4 @@
 interface:
   display_name: "guest-KR6288 存储规则"
-  short_description: "guest-KR6288 上代码、数据、ckpt、日志输出的路径规则"
-  default_prompt: "Use $guest-kr6288-storage when working on guest-KR6288 machines: keep ~/ for code only, store checkpoints and data under /data2/haojitai, and write logs or generated outputs under /data2/haojitai/outputs."
+  short_description: "guest-KR6288 数据盘优先级和故障回退规则"
+  default_prompt: "Use $guest-kr6288-storage on guest-KR6288 machines to keep ~/ for code, prefer /data2/haojitai for large files and outputs, and fall back to /data1/haojitai when /data2 is full or unhealthy."

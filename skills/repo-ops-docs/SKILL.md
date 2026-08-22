@@ -5,12 +5,13 @@ description: 非代码运行经验与流程沉淀规则。Use when discovering, 
 
 # Repo Ops Docs
 
-Use this skill when operational knowledge matters more than code changes: how to start services, run training, generate data, download datasets/models, choose paths, configure proxies, or recover from common runtime failures.
+Use this skill when operational knowledge matters more than code changes: how to start services, run training, generate data, download datasets/models, choose paths, configure proxies, or recover from common runtime failures. For LeafWiki search, de-duplication, placement, and API mechanics, use `leafwiki-docs-writing`.
 
 ## LeafWiki Research Vault
 
 - Prefer LeafWiki for dated operational observations, failed attempts, one-off server state, and cross-project lessons that would clutter a repo. Default base URL: `${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}`.
 - Use repo `docs/` for stable, current runbooks that should travel with the code: setup, launch, verify, stop, reproducibility, and current troubleshooting.
+- Do not commit LeafWiki ids, paths, links, or index tables into project repos unless the user explicitly wants a private/internal repo index. Repo docs should be useful without access to the user's private vault and should only reference repo-local docs plus public or artifact paths.
 - Before writing new operational notes, search LeafWiki when credentials are available:
 
 ```bash
@@ -31,7 +32,7 @@ LEAFWIKI_RESEARCH_API_PASSWORD=$(ssh root@8.134.70.136 "sed -n 's/^LEAFWIKI_RESE
 1. Read the repo first: `README*`, `docs/`, launch scripts, config files, `.env.example`, `scripts/`, `Makefile`, and recent logs if relevant.
 2. Distinguish facts from guesses. Document only commands, paths, ports, env vars, assumptions, and failure modes that were observed, tested, or explicitly provided by the user.
 3. Put stable project-specific knowledge in the current repo, usually under `docs/`.
-4. Put dated run history, transient server state, failed attempts, and cross-project context in LeafWiki when available.
+4. Put dated run history, transient server state, failed attempts, and cross-project context in LeafWiki when available; do not mirror private LeafWiki indexes into repo docs by default.
 5. Keep docs actionable: exact commands, working directory, required environment, expected outputs, where artifacts land, and how to stop or clean up.
 6. Prefer updating an existing relevant doc over creating a new one. Create a new doc only when no suitable location exists.
 7. Keep stable user-facing docs separate from dated development notes and experiment records. See `docs/repo-ops-docs/documentation-structure.md` in Working-Skills-Docs for the recommended layout.
@@ -51,7 +52,7 @@ LEAFWIKI_RESEARCH_API_PASSWORD=$(ssh root@8.134.70.136 "sed -n 's/^LEAFWIKI_RESE
 - If the repo already has `docs/`, add or update a focused file there only for stable current workflow.
 - If the repo lacks docs, create `docs/README.md` for an index and one focused doc such as `docs/training.md`, `docs/data-generation.md`, or `docs/datasets.md`.
 - If knowledge spans multiple operations, prefer small topic docs plus an index instead of one long catch-all page.
-- If docs contain many dated run records or change logs, keep them but move them under `docs/dev-notes/` and make `docs/README.md` point first to stable docs such as `architecture.md`, `reproducibility.md`, setup, datasets, and benchmark runbooks.
+- If docs contain many dated run records or change logs, move the detailed records to LeafWiki when available. Keep repo `docs/dev-notes/` only for repo-local fallback notes that are useful to all repo readers, not as an index to private LeafWiki pages.
 - In `Working-Skills-Docs`, place human-readable references under `docs/<skill-or-topic>/` and update `docs/README.md`.
 
 ## Suggested Doc Shape
@@ -87,5 +88,5 @@ Use the sections that fit; omit irrelevant ones.
 - Do not claim a command works unless it was run or the source repo clearly documents it.
 - Keep secrets out of docs. Use placeholder names for tokens, private URLs, and credentials.
 - Mention uncertainty explicitly with `TBD` or `Observed on <date>` rather than smoothing it over.
-- Stable docs should describe the current workflow in present tense. Put chronological "what changed" detail in `docs/dev-notes/` unless it explains a current compatibility constraint.
+- Stable docs should describe the current workflow in present tense. Put chronological "what changed" detail in LeafWiki when available, or in `docs/dev-notes/` only when repo-local history is explicitly useful to all repo readers or explains a current compatibility constraint.
 - When docs become generally useful, propose or add a concise generalized version to `Working-Skills-Docs/docs/`.

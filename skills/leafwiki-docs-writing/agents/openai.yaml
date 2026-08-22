@@ -1,0 +1,4 @@
+interface:
+  display_name: "LeafWiki Docs Writing"
+  short_description: "Write private LeafWiki research records"
+  default_prompt: "Use $leafwiki-docs-writing to search LeafWiki and write an auditable experiment or operations note."

@@ -10,7 +10,7 @@ Use this skill for long local experiments, benchmark suites, smoke tests, and GP
 ## Principles
 
 - Run a short foreground smoke first when feasible; only launch the long run after smoke proves model loading, config parsing, and the target backend path.
-- Put data, logs, predictions, and outputs under the machine's large output volume, not the repo or home directory. On `guest-KR6288*`, use `/data2/haojitai/outputs/...`.
+- Put data, logs, predictions, and outputs under the machine's large output volume, not the repo or home directory. On `guest-KR6288*`, follow `guest-kr6288-storage`: prefer `/data2/haojitai/outputs/...` and use `/data1/haojitai/outputs/...` when `/data2` is full or unhealthy.
 - Write a run script in `scripts/tmp/*.sh` for long commands. Avoid hand-running huge one-liners that cannot be audited.
 - Do not put a long Python command directly inside nested `ssh 'tmux "python ..."'` quoting. For remote runs, write the launcher on the remote host first, then start tmux with only `cd`, `RUN_TAG`/env vars, and `bash scripts/tmp/<run>.sh`.
 - Do not inline JSON or large hyperparameter dictionaries on the shell command line. Write `hparams.json` or config files from the launcher, preferably with a single-quoted heredoc such as `<<'PY'` so shell variables, quotes, and backslashes are not expanded accidentally.
@@ -53,9 +53,10 @@ git diff --check -- scripts/tmp/<run>.sh scripts/tmp/<config>.json
 3. Run a foreground smoke for the riskiest path, usually one task or a few samples:
 
 ```bash
+GUEST_DATA_ROOT=/data2/haojitai  # use /data1/haojitai when the storage check requires fallback
 CUDA_VISIBLE_DEVICES=<gpu> PYTHONPATH=$PWD:$PWD/src \
 conda run --no-capture-output -n <env> python -u <entrypoint> ... \
-  2>&1 | tee /data2/haojitai/outputs/<project>/<run>/smoke.log
+  2>&1 | tee "$GUEST_DATA_ROOT/outputs/<project>/<run>/smoke.log"
 ```
 
 4. Launch the full run in tmux:
@@ -70,7 +71,7 @@ tmux new-session -d -s <session_name> \
 ```bash
 tmux ls | rg '<session_name>' || true
 tmux capture-pane -pt <session_name> -S -80
-tail -n 120 /data2/haojitai/outputs/<project>/<run>/run.log
+tail -n 120 "$GUEST_DATA_ROOT/outputs/<project>/<run>/run.log"
 nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu,power.draw --format=csv,noheader,nounits
 ```
 
@@ -94,7 +95,8 @@ A good launcher should:
 Use compact status probes:
 
 ```bash
-RUN_ROOT=/data2/haojitai/outputs/<project>/<run>
+GUEST_DATA_ROOT=/data2/haojitai  # use the root selected before launch
+RUN_ROOT="$GUEST_DATA_ROOT/outputs/<project>/<run>"
 cat "$RUN_ROOT/status.tsv"
 tail -n 80 "$RUN_ROOT/run.log"
 for f in "$RUN_ROOT"/full_pred/*.jsonl; do n=$(wc -l < "$f"); [ "$n" -gt 0 ] && printf '%s %s\n' "$(basename "$f")" "$n"; done
