@@ -16,7 +16,7 @@ Use this skill for long local experiments, benchmark suites, smoke tests, and GP
 - Do not inline JSON or large hyperparameter dictionaries on the shell command line. Write `hparams.json` or config files from the launcher, preferably with a single-quoted heredoc such as `<<'PY'` so shell variables, quotes, and backslashes are not expanded accidentally.
 - Every run must have a stable `RUN_ROOT`, `run.log`, `status.tsv`, config copy/path, expected result path, and exact command.
 - Use `tmux new-session -d -s <session>` for durable execution. In Codex desktop sessions, plain `nohup ... &` can exit immediately with empty logs; if this happens, switch to tmux.
-- Pair this skill with `experiment-run-docs` whenever the run starts, finishes, fails, or is resumed. That skill should prefer the LeafWiki research vault for dated run records when available, with repo docs only as fallback or stable runbook material.
+- Pair this skill with `experiment-run-docs` whenever the run starts, finishes, fails, or is resumed. That skill should put dated/private run records in the Git-backed Research-Vault, with repo docs reserved for stable project documentation.
 - Failed, aborted, superseded, and workaround runs are first-class records. Preserve their artifacts and status rows, and mark them clearly so they are not later confused with comparable scored results.
 
 ## Delegation
@@ -75,7 +75,7 @@ tail -n 120 "$GUEST_DATA_ROOT/outputs/<project>/<run>/run.log"
 nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu,power.draw --format=csv,noheader,nounits
 ```
 
-6. Record the launch with `experiment-run-docs`, including the LeafWiki experiment id/path if the vault was updated.
+6. Record the launch with `experiment-run-docs`, including the Research-Vault record path and sync state.
 
 ## Launcher Requirements
 

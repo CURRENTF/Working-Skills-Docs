@@ -1,52 +1,37 @@
 ---
 name: experiment-run-docs
-description: Experiment run documentation rules. Use when Codex runs, resumes, evaluates, benchmarks, or analyzes ML/research experiments and must record what experiment was run, command/config, hyperparameters, data and splits, model and checkpoints, code version, artifacts, final metrics/results, failure status, and corresponding logs. Dated run records go to LeafWiki by default; repo docs are only for stable repo-local runbooks, architecture, parameter semantics, or explicit user-requested fallback notes.
+description: Experiment run documentation rules. Use when Codex runs, resumes, evaluates, benchmarks, or analyzes ML/research experiments and must record the command/config, hyperparameters, data and splits, model/checkpoints, code version, artifacts, metrics, failures, and logs. Put dated or private records in the Git-backed Research-Vault and keep repo docs for stable project documentation.
 ---
 
 # Experiment Run Docs
 
-Use this skill to make every experiment auditable after Codex runs or analyzes it. Record dated run history in the LeafWiki research vault by default. Use repo `docs/` only for stable runbooks, reproducibility instructions, architecture or parameter semantics, public paper-facing summaries, or a repo-local fallback the user explicitly requested.
+Use this skill to make every experiment auditable after Codex runs or analyzes it. Record dated or private run history in Research-Vault by default. Use repo `docs/` only for stable runbooks, reproducibility instructions, architecture or parameter semantics, public paper-facing summaries, or a repo-local fallback the user explicitly requested.
 
 ## Placement Boundary
 
-- Put dated experiment runs, failed attempts, transient machine state, exact local paths, GPU occupancy, private project history, and raw benchmark/profiling records in LeafWiki.
+- Put dated experiment runs, failed attempts, transient machine state, exact local paths, GPU occupancy, private project history, and raw benchmark/profiling records in `~/Documents/Codex/Research-Vault` using `research-vault-docs`.
 - Do not append chronological run logs, one-off result tables, local output roots, failed attempt notes, or "what changed today" implementation history to repo `docs/` unless the user explicitly asks for a repo-local record.
 - Repo docs may be updated when the content is stable and useful to future repo readers without private context: setup, launch/verify commands, reproducibility instructions, architecture, configuration/parameter semantics, or concise public benchmark summaries.
-- If a code change needs a repo-doc update, write the current stable behavior in present tense. Keep dated evidence and private artifact paths in LeafWiki or the run output directory.
-- Do not commit LeafWiki ids, paths, private links, or private index tables into repo docs unless the user explicitly asks for an internal/private repo index.
-- If LeafWiki cannot be reached or credentials are missing, do not create a new repo experiment log as an automatic fallback. Preserve auditability with the run's output-root manifest/logs and say in the final response that no LeafWiki record was written; ask before adding a repo-local fallback note.
+- If a code change needs a repo-doc update, write the current stable behavior in present tense. Keep dated evidence and private artifact paths in Research-Vault or the run output directory.
+- Do not commit private-vault paths, links, indexes, or Git metadata into repo docs unless the user explicitly asks for a private integration.
+- If the vault cannot be cloned, opened, or safely updated, preserve auditability with the run's output-root manifest/logs and report that the private record remains unsynced. Do not create a repo-local private experiment log unless the user explicitly asks for one.
 
-## LeafWiki Research Vault
+## Private Research Vault
 
-- Default base URL: `http://8.134.70.136:8080`. Override with `LEAFWIKI_RESEARCH_BASE_URL` when set.
-- Authenticate with `LEAFWIKI_RESEARCH_API_PASSWORD` or `LEAFWIKI_RESEARCH_API_TOKEN` when present. Do not print secrets. On the user's trusted workstation, if env vars are missing and SSH is available, load the password into a shell variable without echoing it:
-
-```bash
-LEAFWIKI_RESEARCH_API_PASSWORD=$(ssh root@8.134.70.136 "sed -n 's/^LEAFWIKI_RESEARCH_API_PASSWORD=//p' /opt/leafwiki/.env")
-```
-
-- Before creating a new record, search existing context:
-
-```bash
-curl -fsS "${LEAFWIKI_RESEARCH_BASE_URL:-http://8.134.70.136:8080}/api/research/docs/search?q=<topic>&project=<project>&kind=page&limit=10" \
-  -H "X-Research-Password: $LEAFWIKI_RESEARCH_API_PASSWORD"
-```
-
-- Create or reuse an experiment record with `POST /api/research/experiments`. Use a human-readable `slugHint`; the server generates and de-duplicates the canonical ID. Put run root, config path, command identity, or result path in `fingerprint` so retries can be matched safely.
-- Update the same record with `/events`, `/status`, and `/results` as the run starts, progresses, finishes, fails, or is superseded.
-- Use `/api/research/docs/tree?project=...&kind=page` to browse the project document hierarchy before search/read when the relevant path is unknown.
-- Use `/api/research/docs/read?path=...` to read full Markdown only after search returns a relevant path.
-- For exact endpoint shapes, curl examples, and response fields, read `references/leafwiki-research-api.md` before calling or changing the LeafWiki API.
+- The canonical checkout is `~/Documents/Codex/Research-Vault`; `research-vault-docs` clones `git@github.com:CURRENTF/Research-Vault.git` there when it is absent.
+- Search existing records before writing. Reuse the same file when the run root, config, command identity, result path, or another stable fingerprint matches.
+- Store one distinct run or variant per file under `projects/<project>/experiments/<YYYY>/<MM>/` and update that file as the run starts, progresses, finishes, fails, or is superseded.
+- Keep large logs and result artifacts outside the vault. Record their exact paths and the evidence extracted from them.
 
 ## Workflow
 
 1. Before finishing the user turn, identify every experiment run, resumed run, evaluation, benchmark, or analysis performed in this session.
 2. Inspect the actual command, config, logs, result files, checkpoint directories, and terminal output that support the record.
-3. If LeafWiki is reachable and credentials are available, search for an existing experiment/context page, then create or update the vault record. Keep the returned `id` and `path` in your working notes and final response.
-4. If LeafWiki is unavailable or credentials are missing, keep the experiment record in the run output directory when possible, for example `run_manifest.md`, `status.tsv`, `hparams.json`, or the launcher log. Do not write a repo-local experiment record unless the user explicitly asks for one.
-5. Add one LeafWiki entry per distinct run or variant. Use stable run names, run roots, result paths, config paths, or log/checkpoint directories so retries and resumed runs can be matched back to artifacts.
-6. After a long-running job is launched but before it finishes, record a `running` event in LeafWiki when available, or ensure the output root has a durable status file. Update the same record after completion.
-7. Separately decide whether the repo docs need a stable update. If yes, keep it short, present-tense, and free of dated local run history; put detailed evidence in LeafWiki or artifacts.
+3. Use `research-vault-docs` to locate or clone the private vault, search for a matching record, and create or update it.
+4. If the vault is unavailable, keep the record in the run output directory when possible, for example `run_manifest.md`, `status.tsv`, `hparams.json`, or the launcher log. Do not write a repo-local private record unless the user explicitly asks for one.
+5. Use stable run names, run roots, result paths, config paths, or log/checkpoint directories so retries and resumed runs can be matched back to the same file.
+6. After a long-running job is launched but before it finishes, record its `running` state in the vault when safely possible and ensure the output root has a durable status file. Update the same record after completion.
+7. Separately decide whether the repo docs need a stable update. If yes, keep it short, present-tense, and free of dated local run history; put detailed evidence in Research-Vault or the run artifacts.
 
 ## Required Fields
 
@@ -100,4 +85,4 @@ Include the fields that apply. Write `TBD` or `not captured` instead of inventin
 
 ## Final Response
 
-When the user asked Codex to run or analyze experiments, mention the LeafWiki experiment id/path updated and the key log/result paths in the final response. If LeafWiki was unavailable or credentials were missing, say no LeafWiki record was written and point to the output-root manifest/logs instead. Mention a repo doc path only when a stable repo doc was intentionally updated or the user explicitly requested a repo-local fallback note.
+When the user asked Codex to run or analyze experiments, mention the Research-Vault record path, whether it was pushed, and the key log/result paths. If the vault was unavailable or could not be safely synced, say so and point to the output-root manifest/logs instead. Mention a repo doc path only when a stable repo doc was intentionally updated or the user explicitly requested a repo-local fallback note.
