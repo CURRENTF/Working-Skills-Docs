@@ -52,6 +52,11 @@ target, not a retrospective cleanup rule. Include only applicable fields; write
   launcher/config path and material overrides when sufficient. Do not copy a
   config into prose.
 - **Provenance:** branch/commit and only relevant worktree changes.
+  Git commit and dirty status are sufficient for routine code identity. Unless
+  explicitly requested, do not copy/archive source, save worktree patches,
+  inventory per-file source hashes, or require source equality to run, resume,
+  or reuse an experiment. Untracked source alone is not a reason to reject a
+  run. This does not remove config, input-data, model, or result validation.
 - **Environment:** normally one compact line or table row per system: host/GPU
   topology, environment path, model/data identity, and only versions or backend
   choices that affect reproduction or interpretation. Leave package inventories,

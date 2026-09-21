@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPTX 编辑便利性"
+  short_description: "制作可整段修改的 PPTX，避免逐行拆框并检查原生编辑结构"
+  default_prompt: "使用 $pptx-editability 制作或修复演示文稿，确保正文按段落编辑、图表保留原生数据，并检查排版与编辑结构。"
