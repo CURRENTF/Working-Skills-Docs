@@ -1,4 +1,4 @@
 interface:
   display_name: "Experiment Run Docs"
-  short_description: "Record dated experiments in Research-Vault"
-  default_prompt: "Use $experiment-run-docs after running or analyzing experiments to document command, config, data, model/checkpoints, results, artifacts, and logs in Research-Vault; update repo docs only for stable project documentation."
+  short_description: "Record launch command, Git commit, and final results"
+  default_prompt: "Use $experiment-run-docs for valuable experiment results. Record only the launch command, code Git commit, and final results; update the same record and remove confirmed obsolete or inconsistent content."

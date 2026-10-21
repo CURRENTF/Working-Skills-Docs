@@ -1,4 +1,4 @@
 interface:
   display_name: "Research Vault Docs"
-  short_description: "Write private Git-backed research records"
-  default_prompt: "Use $research-vault-docs to search, write, and safely sync a private experiment, operations, investigation, or cross-project Markdown record."
+  short_description: "Maintain valuable private research records"
+  default_prompt: "Use $research-vault-docs to search or maintain valuable private knowledge. Merge duplicates, remove confirmed obsolete or inconsistent content, and keep experiment records to launch command, Git commit, and final results."

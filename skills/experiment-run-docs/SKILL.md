@@ -1,132 +1,57 @@
 ---
 name: experiment-run-docs
-description: Compact experiment-run documentation rules. Use when Codex runs, resumes, evaluates, benchmarks, or analyzes ML/research experiments and must preserve decisive execution identity, provenance, artifacts, results, and failures without duplicating logs or narrating result tables. Put dated or private records in the Git-backed Research-Vault and keep repo docs for stable project documentation.
+description: Maintain experiment records limited to the launch command, code Git commit, and final results. Use for research experiments whose results affect a decision; skip routine smoke runs and one-off diagnostics.
 ---
 
 # Experiment Run Docs
 
-Leave a compact, auditable trail after running or analyzing an experiment. The
-record is an index into decisive evidence, not a copy of configs, manifests,
-logs, or terminal narrative.
+## Value Threshold
+
+Keep a record only when it changes a future decision, prevents a repeated
+mistake, or documents a currently useful workflow. Running or analyzing an
+experiment does not by itself require a new record.
+
+Before adding content, find the existing relevant record. Merge duplicates and
+remove content confirmed to be outdated or inconsistent with established facts.
+Leave content of uncertain validity unchanged.
+
+## Record Content
+
+Use only these fields:
+
+- Launch command, including the working directory and arguments needed to run it.
+- The code's Git commit.
+- Final experimental results, including an unsuccessful outcome when applicable.
+
+Intermediate records use the same fields. Leave results empty until final
+results are available, then update the same record. Do not append progress,
+retry history, environment inventories, or execution diaries.
+
+Do not archive source code, worktree patches, source snapshots, or per-file
+source hashes. A dirty worktree does not block running or recording an
+experiment. Do not require a clean commit, source equality, or source recovery.
 
 ## Placement
 
-- Put dated runs, failed attempts, transient machine state, private paths, and
-  raw benchmark or profiling results in `~/Documents/Codex/Research-Vault`
-  through `research-vault-docs`.
-- Keep repo `docs/` for stable setup, runbooks, reproducibility instructions,
-  architecture, parameter semantics, and concise public summaries. Do not put
-  chronological history or one-off result tables there unless asked.
-- Do not add private-vault paths, links, indexes, or Git metadata to a project
-  repo unless the user explicitly requests that integration.
-- If the vault is unavailable, preserve the record beside the run artifacts in
-  a manifest, status file, or launcher log and report that it is unsynced.
+- If the project defines an official result location, keep its final record there.
+- Use `research-vault-docs` for a private record that meets the value threshold;
+  do not duplicate a repository-owned result in the vault.
+- Keep stable setup, runbooks, architecture, and parameter semantics in the repo.
+- Do not add private-vault paths or links to public project documentation.
 
-## Workflow
-
-1. Inspect the actual command, config, logs, results, checkpoints, and terminal
-   evidence, but record only what is needed to identify, reproduce, and
-   interpret the run.
-2. Search the vault and update the existing record when a run root, config,
-   command identity, result path, or other stable fingerprint matches. Keep one
-   file per distinct run or variant under
-   `projects/<project>/experiments/<YYYY>/<MM>/`.
-3. For a long job, record `running` after launch and update the same file after
-   completion with a concise final state. Preserve progress and failure details
-   already written; do not delete or rewrite them merely to shorten the record.
-4. Keep large logs and artifacts outside the vault and point to their exact
-   paths. Separately update repo docs only when the result establishes stable
-   project behavior worth documenting.
-
-## Compact Record
-
-New prose in a routine completed record should usually fit in about 10-30 lines,
-excluding frontmatter, tables, and a necessary exact command. This is a writing
-target, not a retrospective cleanup rule. Include only applicable fields; write
-`TBD` or `not captured` instead of inventing facts.
-
-- **Identity:** date, status, project, and a stable fingerprint.
-- **Question:** one sentence. Do not narrate task history or predecessor jobs
-  unless they affect validity.
-- **Run:** working directory plus the exact command, or a canonical
-  launcher/config path and material overrides when sufficient. Do not copy a
-  config into prose.
-- **Provenance:** branch/commit and only relevant worktree changes.
-  Git commit and dirty status are sufficient for routine code identity. Unless
-  explicitly requested, do not copy/archive source, save worktree patches,
-  inventory per-file source hashes, or require source equality to run, resume,
-  or reuse an experiment. Untracked source alone is not a reason to reject a
-  run. This does not remove config, input-data, model, or result validation.
-- **Environment:** normally one compact line or table row per system: host/GPU
-  topology, environment path, model/data identity, and only versions or backend
-  choices that affect reproduction or interpretation. Leave package inventories,
-  cache/proxy setup, and routine resource checks in the manifest or log.
-- **Protocol:** only comparison-affecting data, model, checkpoint,
-  hyperparameter, decoding, and repeat/statistic choices. Prefer one compact
-  table for multiple variants.
-- **Evidence:** output root plus canonical summary, config, log, checkpoint, or
-  manifest paths.
-- **Failure:** for a failed or inconclusive run, record the first failing step,
-  concise error, partial artifacts, and next diagnostic. Preserve recovered
-  attempts already present in a completed record. When adding the final state,
-  avoid repeating them and call out only changes to the final protocol or a
-  remaining material limitation.
-
-Expand beyond the default only when mechanistic evidence, a complex incident,
-or a load-bearing caveat would otherwise be lost.
-
-## Results
-
-- Every metric must point to a source artifact and retain its source metric and
-  split names.
-- Prefer a self-contained table whose heading and columns identify the variant,
-  statistic, unit, baseline, and comparison direction.
-- Treat the table as the result. Do not repeat its values, rankings, trends,
-  speedups, or statements such as "faster in every row" in prose.
-- After a table, add text only for a non-obvious validity limit, interpretation
-  caveat, or next decision that the table cannot express. Otherwise end with
-  the canonical source path.
-- Use compact tables to map multiple systems or variants to their run/config,
-  environment identity, artifacts, and results instead of separate prose
-  subsections.
-- Never paste large logs or unredacted secrets, tokens, private URLs, or
-  credentials.
-
-## Compact Template
+## Template
 
 ```markdown
----
-project: <project>
-record_kind: experiment
-date: <YYYY-MM-DD>
-status: <running | completed | failed | aborted | inconclusive>
-fingerprint: <run root, config, or result identity>
----
-
-# <short run name>
-
-- Question: <one sentence>
-- Run: `<working dir>`; `<launcher/config or concise exact command>`
-- Code: `<branch>@<commit>`; <relevant dirty state only>
-- Environment: <host/GPU topology>; `<env>`; <model/data>; <material backend>
-- Artifacts: `<output root>`; summary `<result file>`; log `<log file>`
-
-## Protocol
-
-<one compact table or at most a few material bullets>
-
-## Results
-
-<self-contained table>
-
-Source: `<canonical result artifact>`
-
-<Optional one-line caveat only when the table could otherwise be misread.>
+- Launch: `cd <project> && <command with arguments>`
+- Git commit: `<commit>`
+- Final results:
 ```
+
+For multiple variants, a result table may replace the last field. Identify the
+metric and unit in that table; do not repeat its contents in prose. Never record
+credentials, tokens, or unredacted secrets.
 
 ## Final Response
 
-When Codex ran or analyzed an experiment, report the Research-Vault record path,
-its push state, and the key external log/result paths. Mention repo docs only
-when they were intentionally updated. If the vault could not be synced, point
-to the recoverable output-root record instead.
+Name the record path only when a record was created or updated. Report its Git
+state accurately; this skill does not authorize committing or pushing.

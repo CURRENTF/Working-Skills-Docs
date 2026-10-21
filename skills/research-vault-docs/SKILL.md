@@ -1,98 +1,68 @@
 ---
 name: research-vault-docs
-description: Search, create, update, and sync compact private Markdown records in the user's GitHub-backed Research-Vault. Use for dated experiment/evaluation records, repository operations, troubleshooting, investigations, private project history, and cross-project lessons. Keep stable project documentation in the project repo instead.
+description: Search and maintain valuable private research records in Research-Vault. Write only findings that change future decisions, prevent repeated mistakes, or document a currently useful workflow; keep experiment records to launch command, Git commit, and final results.
 ---
 
 # Research Vault Docs
 
-Use the private filesystem-first vault as the source of truth for dated or
-private research history. Domain skills decide what evidence matters; this
-skill handles locating, placing, writing, and syncing records.
+## Value Threshold And Maintenance
+
+Search without creating a record when existing knowledge answers the question.
+Create or update a record only for content that changes future decisions,
+prevents repeated mistakes, or documents a currently useful workflow.
+Routine checks, failed attempts, and transient machine state alone do not qualify.
+
+Before adding content, search for the same topic or experiment. Update the
+existing record, merge duplicates, and remove content confirmed to be outdated
+or inconsistent with established facts. Leave content of uncertain validity
+unchanged. Do not append execution diaries or preserve superseded content just
+because it was previously recorded.
 
 ## Locate Or Clone
 
 The canonical checkout is `~/Documents/Codex/Research-Vault`; its remote is
 `git@github.com:CURRENTF/Research-Vault.git`.
 
-1. If `~/Documents/Codex/Research-Vault/.git` exists, verify that `origin`
-   matches the canonical remote.
-2. If the checkout is absent, create `~/Documents/Codex` and clone the remote to
-   exactly `~/Documents/Codex/Research-Vault`.
-3. If the target exists but is not a Git repository, or has another origin,
-   stop without deleting or overwriting it and report the conflict.
+- Verify an existing checkout has the canonical origin.
+- Clone to that location only when the task needs the vault and it is absent.
+- If the target is not a Git repository or has another origin, report the
+  conflict without deleting or overwriting it.
+- If access fails, report the limitation without creating substitute records.
 
-Use a normal clone, not a project submodule. If GitHub authentication, network
-access, or cloning fails, preserve the record in the run output directory when
-possible and report that the vault was not updated.
+## Placement
 
-## Boundary And Placement
+- Keep stable project runbooks, architecture, and parameter semantics in the
+  project repository. Do not add private-vault links to public docs.
+- Keep an official experiment record in its project-designated location rather
+  than duplicating it in the vault.
+- Use the established project spelling and existing relevant file. For a new
+  record, use the appropriate `projects/<project>/experiments/`, `operations/`,
+  or `investigations/` directory, or `shared/<topic>/` for cross-project lessons.
 
-- Put dated experiments, failed attempts, transient machine state, exact local
-  paths, private history, operational incidents, and cross-project lessons in
-  the vault.
-- Keep stable setup, launch instructions, architecture, parameter semantics,
-  reproducibility guidance, and public runbooks in the project repo. Do not add
-  vault links or Git metadata there unless explicitly asked.
-- Before writing, inspect the vault worktree and search by project, run root,
-  config, artifact path, error phrase, and method or benchmark name. Update an
-  existing record when those fields identify the same event.
+## Experiment Records
 
-Use the established project spelling and these paths:
+Record only:
 
-```text
-projects/<project>/experiments/<YYYY>/<MM>/<slug>.md
-projects/<project>/operations/<YYYY>/<MM>/<slug>.md
-projects/<project>/investigations/<YYYY>/<MM>/<slug>.md
-shared/<topic>/<slug>.md
-```
+- The launch command, including the working directory and required arguments.
+- The code's Git commit.
+- Final experimental results, including an unsuccessful outcome when applicable.
 
-Prefer one file per distinct run, incident, or investigation; update it rather
-than creating retry duplicates or maintaining a frequently edited global index.
-Include a compact identity block with project, kind, date, status, and a stable
-fingerprint such as run root, config, result path, or issue identity. Write
-`TBD` or `not captured` rather than inventing facts. For imported records, YAML
-`status` is authoritative; preserve `legacy_leafwiki_*` provenance fields.
+Intermediate records use the same fields; leave results empty until available.
+Update the same record when final results arrive. Do not add progress logs,
+retry histories, environment inventories, artifact indexes, or extra metadata.
 
-## Concise By Default
+Do not archive source code, worktree patches, source snapshots, or per-file
+source hashes. A dirty worktree does not block running or recording an
+experiment; do not require source equality or a clean commit.
 
-Treat a record as an evidence index; durable detail belongs in referenced
-configs, manifests, summaries, logs, checkpoints, or result artifacts.
+## Safety And Git
 
-- State status and purpose in one or two lines. Do not reconstruct the
-  conversation, predecessor-job history, routine resource gate, or execution
-  diary.
-- Keep environment description to one compact line per system or a comparison
-  table when practical. Record only what affects reproduction or interpretation
-  and link a manifest for package inventories and setup history.
-- Prefer tables for protocols, variants, environments, failures, and results
-  when they replace repeated prose.
-- A self-contained result table is authoritative. Do not explain the same
-  values, rankings, trends, or speedups below it. Add prose only for a necessary
-  caveat or conclusion not already visible in the table.
-- Preserve intermediate progress and recovered attempts already written. On
-  completion, add a concise final state without deleting or rewriting the
-  existing history; avoid repeating it unless it changed the final protocol or
-  leaves a material limitation.
-- New prose for a routine experiment record should usually fit in about 10-30
-  lines, excluding frontmatter, tables, and a necessary exact command. This is
-  not a cleanup target for existing content. Expand for load-bearing mechanistic
-  evidence, complex incidents, or caveats.
+- Base new content on observed facts and keep it concise. Never store credentials,
+  tokens, tokenized URLs, or other unredacted secrets.
+- Inspect Git status before editing. Preserve unrelated changes; do not pull or
+  rebase a dirty vault. If clean and tracking an upstream, use `git pull --ff-only`
+  before writing. Never force-push.
+- Commit or push only when authorized by the user. Keep unrelated files out of
+  any authorized commit and report conflicts or failures explicitly.
 
-## Evidence, Safety, And Sync
-
-- Support claims with actual commands, configs, logs, result artifacts, Git
-  state, or user-provided facts. Store concise pointers, not duplicated config
-  contents, package inventories, large logs, datasets, weights, checkpoints, or
-  generated binaries.
-- Never store credentials, API keys, access tokens, tokenized URLs, or other
-  unredacted secrets.
-- Inspect `git status` before editing. If the vault is dirty, do not pull,
-  rebase, or mix unrelated files into a commit. If clean and tracking an
-  upstream, use a non-rewriting pull before writing. Never force-push.
-- When the active task includes persisting a record, validate the touched
-  Markdown, commit only that task's files, and normally push. On unrelated
-  changes, conflict, or push failure, leave the record recoverable locally and
-  report its exact state.
-
-In the final response, name the record path, status, push state, and important
-external log/result artifacts.
+Name the record path and its actual Git state only when it was created or updated.

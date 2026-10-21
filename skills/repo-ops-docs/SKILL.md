@@ -1,16 +1,33 @@
 ---
 name: repo-ops-docs
-description: 非代码运行经验与流程沉淀规则。Use when discovering, running, or documenting repository-specific operational workflows such as training servers, inference/API servers, Unreal Engine data generation, dataset/model downloads, environment setup, launch commands, ports, proxies, storage paths, and recurring troubleshooting. Keep stable runbooks in the project repo and dated or private history in Research-Vault.
+description: Maintain useful, current repository runbooks and reusable operational lessons. Use when setup, launch, or troubleshooting work produces knowledge that changes future decisions or prevents repeated mistakes; skip routine observations and one-off diagnostics.
 ---
 
 # Repo Ops Docs
 
 Use this skill when operational knowledge matters more than code changes: how to start services, run training, generate data, download datasets/models, choose paths, configure proxies, or recover from common runtime failures. Use `research-vault-docs` for private-vault discovery, de-duplication, file placement, and Git synchronization.
 
+## Value Threshold And Maintenance
+
+Document only information that changes future decisions, prevents repeated
+mistakes, or describes a currently useful workflow. A successful command,
+one-off server state, or failed attempt alone does not justify a record.
+
+When adding content, update the relevant existing document, merge duplicates,
+and remove content confirmed to be outdated or inconsistent with established
+facts. Leave content of uncertain validity unchanged.
+
+Experiment records, including intermediate records, contain only the launch
+command, the code's Git commit, and final results. Leave results empty until
+available and update the same record. Do not archive source code, worktree
+patches, source snapshots, or per-file source hashes; a dirty worktree is allowed.
+
 ## Placement Boundary
 
 - Put stable, current runbooks that should travel with the code in the project repo: setup, launch, verify, stop, reproducibility, and current troubleshooting.
-- Put dated operational observations, failed attempts, one-off server state, exact private paths, and cross-project lessons in `~/Documents/Codex/Research-Vault`.
+- Put finalized official results in the repository's designated official
+  experiment directory, using only the launch command, Git commit, and final results.
+- Put private operational lessons that meet the value threshold in Research-Vault.
 - Keep project docs self-contained. Do not commit private-vault paths, links, indexes, or Git metadata into project repos unless the user explicitly requests a private integration.
 - Promote reusable agent guidance to the relevant skill in `Working-Skills-Docs`, not to a second top-level documentation tree.
 
@@ -19,7 +36,7 @@ Use this skill when operational knowledge matters more than code changes: how to
 1. Read the repo first: `README*`, `docs/`, launch scripts, config files, `.env.example`, `scripts/`, `Makefile`, and recent logs if relevant.
 2. Distinguish facts from guesses. Document only commands, paths, ports, env vars, assumptions, and failure modes that were observed, tested, or explicitly provided by the user.
 3. Put stable project-specific knowledge in the current repo, usually under `docs/`.
-4. Put dated run history, transient server state, failed attempts, private context, and cross-project lessons in Research-Vault using `research-vault-docs`.
+4. Use `research-vault-docs` only for valuable private lessons; do not create routine operational histories or duplicate repository-owned results.
 5. Keep docs actionable: exact commands, working directory, required environment, expected outputs, where artifacts land, and how to stop or clean up.
 6. Prefer updating an existing relevant doc over creating a new one. Create a new doc only when no suitable location exists.
 7. Keep stable user-facing docs separate from dated development notes and experiment records.
@@ -39,7 +56,7 @@ Use this skill when operational knowledge matters more than code changes: how to
 - If the repo already has `docs/`, add or update a focused file there only for stable current workflow.
 - If the repo lacks docs, create `docs/README.md` for an index and one focused doc such as `docs/training.md`, `docs/data-generation.md`, or `docs/datasets.md`.
 - If knowledge spans multiple operations, prefer small topic docs plus an index instead of one long catch-all page.
-- If docs contain many dated run records or change logs, move the private or transient records to Research-Vault. Keep repo `docs/dev-notes/` only when repo-local history is useful to all repo readers or explains a current compatibility constraint.
+- Do not move dated histories to Research-Vault merely because they exist. Apply the value threshold and remove confirmed obsolete or inconsistent content when updating the relevant document.
 - In `Working-Skills-Docs`, place supporting references under the owning `skills/<skill>/references/` directory and link them from that skill when they are needed.
 
 ## Suggested Doc Shape
@@ -74,6 +91,6 @@ Use the sections that fit; omit irrelevant ones.
 - Long or fragile commands should be converted into repo-local scripts only if the user wants automation; otherwise document them as commands.
 - Do not claim a command works unless it was run or the source repo clearly documents it.
 - Keep secrets out of docs. Use placeholder names for tokens, private URLs, and credentials.
-- Mention uncertainty explicitly with `TBD` or `Observed on <date>` rather than smoothing it over.
-- Stable docs should describe the current workflow in present tense. Put chronological "what changed" detail in Research-Vault, or in `docs/dev-notes/` only when repo-local history is explicitly useful to all repo readers or explains a current compatibility constraint.
-- When guidance becomes generally useful across repositories, propose or add a concise generalized version to the relevant skill in `Working-Skills-Docs`.
+- Do not invent facts when documenting new knowledge. Leave existing content of uncertain validity unchanged.
+- Stable docs should describe the current workflow in present tense. Do not append chronological execution history.
+- Update cross-repository guidance in `Working-Skills-Docs` only within the authorized task scope.

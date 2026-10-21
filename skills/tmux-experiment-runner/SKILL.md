@@ -9,15 +9,15 @@ Use this skill for long local experiments, benchmark suites, smoke tests, and GP
 
 ## Principles
 
-- Run a short foreground smoke first when feasible; only launch the long run after smoke proves model loading, config parsing, and the target backend path.
+- Only add or run tests that prevent P0/P1 consequences; prioritize end-to-end tests. Reuse relevant passing checks rather than repeating smoke runs.
 - Put data, logs, predictions, and outputs under the machine's large output volume, not the repo or home directory. On `guest-KR6288*`, follow `guest-kr6288-storage`: prefer `/data2/haojitai/outputs/...` and use `/data1/haojitai/outputs/...` when `/data2` is full or unhealthy.
 - Write a run script in `scripts/tmp/*.sh` for long commands. Avoid hand-running huge one-liners that cannot be audited.
 - Do not put a long Python command directly inside nested `ssh 'tmux "python ..."'` quoting. For remote runs, write the launcher on the remote host first, then start tmux with only `cd`, `RUN_TAG`/env vars, and `bash scripts/tmp/<run>.sh`.
 - Do not inline JSON or large hyperparameter dictionaries on the shell command line. Write `hparams.json` or config files from the launcher, preferably with a single-quoted heredoc such as `<<'PY'` so shell variables, quotes, and backslashes are not expanded accidentally.
-- Every run must have a stable `RUN_ROOT`, `run.log`, `status.tsv`, config copy/path, expected result path, and exact command.
+- Use a stable run root and the launcher's existing process status for monitoring.
 - Use `tmux new-session -d -s <session>` for durable execution. In Codex desktop sessions, plain `nohup ... &` can exit immediately with empty logs; if this happens, switch to tmux.
-- Pair this skill with `experiment-run-docs` whenever the run starts, finishes, fails, or is resumed. That skill should put dated/private run records in the Git-backed Research-Vault, with repo docs reserved for stable project documentation.
-- Failed, aborted, superseded, and workaround runs are first-class records. Preserve their artifacts and status rows, and mark them clearly so they are not later confused with comparable scored results.
+- Apply `experiment-run-docs` only when the run meets its value threshold. Records contain only the launch command, code Git commit, and final results; intermediate records use the same fields with results empty until available. Update the same record and remove confirmed obsolete or inconsistent content; leave uncertain content unchanged.
+- Do not archive source code, patches, source snapshots, or per-file source hashes. A dirty worktree does not block running or recording an experiment.
 
 ## Delegation
 
@@ -50,13 +50,12 @@ python -m json.tool scripts/tmp/<config>.json >/dev/null
 git diff --check -- scripts/tmp/<run>.sh scripts/tmp/<config>.json
 ```
 
-3. Run a foreground smoke for the riskiest path, usually one task or a few samples:
+3. Run an end-to-end smoke only when needed to prevent a P0/P1 consequence and existing checks do not cover it:
 
 ```bash
 GUEST_DATA_ROOT=/data2/haojitai  # use /data1/haojitai when the storage check requires fallback
 CUDA_VISIBLE_DEVICES=<gpu> PYTHONPATH=$PWD:$PWD/src \
-conda run --no-capture-output -n <env> python -u <entrypoint> ... \
-  2>&1 | tee "$GUEST_DATA_ROOT/outputs/<project>/<run>/smoke.log"
+conda run --no-capture-output -n <env> python -u <entrypoint> ...
 ```
 
 4. Launch the full run in tmux:
@@ -71,11 +70,10 @@ tmux new-session -d -s <session_name> \
 ```bash
 tmux ls | rg '<session_name>' || true
 tmux capture-pane -pt <session_name> -S -80
-tail -n 120 "$GUEST_DATA_ROOT/outputs/<project>/<run>/run.log"
 nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu,power.draw --format=csv,noheader,nounits
 ```
 
-6. Record the launch with `experiment-run-docs`, including the Research-Vault record path and sync state.
+6. If a record meets the value threshold, keep only the launch command, Git commit, and final results; leave results empty until available.
 
 ## Launcher Requirements
 
@@ -83,11 +81,10 @@ A good launcher should:
 
 - use `set -euo pipefail`;
 - export `CUDA_VISIBLE_DEVICES`, `PYTHONPATH`, dataset paths, and output roots explicitly;
-- write `status.tsv` with `stage`, `status`, start/end time, GPU, config, log path, and result path;
-- record `hostname`, `pwd`, `git rev-parse HEAD`, `git status --short`, model/checkpoint paths, and resolved runtime knobs before launch, especially on remote hosts where local/remote confusion is possible;
-- run smoke before full unless the user explicitly asks to skip smoke;
+- expose process completion and exit status for monitoring;
+- verify the target host and working directory before launch;
+- avoid repeating a smoke already covered by relevant passing checks;
 - validate expected output row counts or sample counts before marking `completed`;
-- write all stdout/stderr into `run.log`;
 - return nonzero on missing result files, bad row counts, parse errors, OOM, CUDA errors, or failed metrics.
 
 ## Monitoring
@@ -97,14 +94,11 @@ Use compact status probes:
 ```bash
 GUEST_DATA_ROOT=/data2/haojitai  # use the root selected before launch
 RUN_ROOT="$GUEST_DATA_ROOT/outputs/<project>/<run>"
-cat "$RUN_ROOT/status.tsv"
-tail -n 80 "$RUN_ROOT/run.log"
-for f in "$RUN_ROOT"/full_pred/*.jsonl; do n=$(wc -l < "$f"); [ "$n" -gt 0 ] && printf '%s %s\n' "$(basename "$f")" "$n"; done
-rg -n "Traceback|RuntimeError|CUDA|illegal memory access|OOM|failed|bounds check" "$RUN_ROOT/run.log" || true
+tmux capture-pane -pt <session_name> -S -80
 nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu,power.draw --format=csv,noheader,nounits
 ```
 
-When reporting progress, state exact task/row counts, whether the tmux session still exists, GPU utilization, and the latest error grep result.
+Use existing runner status, results, or logs when available. Report progress in the conversation: task/sample counts, process state, GPU utilization, and observed errors. Do not append monitoring output to the experiment record.
 
 ## Completion
 
@@ -113,7 +107,7 @@ Before saying a run completed:
 - confirm the tmux session exited or is idle after printing `EXIT_CODE=0`;
 - confirm the result file exists and is nonempty;
 - validate all expected prediction/sample counts;
-- inspect the final log tail and grep for errors;
-- update the experiment record with command, config, run root, logs, metrics, failure notes, and code/worktree state.
+- inspect the terminal state and existing runner diagnostics for errors;
+- update a valuable experiment record with only the launch command, code Git commit, and final results.
 
-If a run fails, preserve the failed artifacts. Do not silently relaunch with changed hyperparameters; document the failed config and only change the smallest needed runtime knob for recovery.
+Report failures explicitly. Do not silently relaunch with changed hyperparameters; keep recovery within the authorized protocol.
