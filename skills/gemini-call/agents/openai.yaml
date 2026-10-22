@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gemini 调用"
+  short_description: "通过 agy CLI 调用 Gemini，支持单次任务、材料输入和指定会话续聊"
+  default_prompt: "使用 $gemini-call 把当前任务交给 Gemini，并返回结果。"
