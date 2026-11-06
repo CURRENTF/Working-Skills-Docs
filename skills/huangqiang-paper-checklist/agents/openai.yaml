@@ -1,0 +1,3 @@
+interface:
+  display_name: "HuangQiang-Paper-Checklist"
+  short_description: "黄强论文排版：重点保持列声明简洁、源码引用不超过四层，优先使用 tabular"

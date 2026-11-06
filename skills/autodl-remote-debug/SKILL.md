@@ -1,6 +1,6 @@
 ---
 name: autodl-remote-debug
-description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服务器，也支持在远程服务器上直接运行 Codex；以 cgroup 而非 lscpu/free 判断实际 CPU 和内存配额；避免写系统盘；代码/临时中间文件优先用 /root/autodl-tmp，预训练模型、数据集、训练 ckpt、日志和输出分别放 /root/autodl-fs/models、datasets、checkpoints、logs、outputs；网络操作前先检查已有代理；动态选择 conda 环境；长命令写入 scripts/tmp/*.sh 避免引号转义问题。Use when debugging or running projects in an AutoDL/GPUHub environment.
+description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 或远程本机运行；按 cgroup 判断 CPU/内存配额；代码、临时文件及新建 conda/venv 环境放 /root/autodl-tmp 本地数据盘，禁止在 autodl-fs 安装环境；权重、数据和长期产物放共享盘；检查已有代理，动态选择环境，使用脚本安全启动长任务。Use when debugging or running projects in an AutoDL/GPUHub environment.
 ---
 
 # AutoDL/GPUHub Debug
@@ -9,11 +9,13 @@ description: AutoDL/GPUHub 调试与运行工作流：支持 SSH 操作远程服
 
 - 可能通过 SSH 操作远程服务器，也可能已经在远程服务器上直接运行 Codex；先判断当前执行位置。
 - AutoDL 容器中的 `lscpu`、`nproc`、`free` 和 `/proc/meminfo` 可能显示整台宿主机，而不是实例购买的配额。规划 worker、线程池、共享内存、缓存和批量大小时必须读取当前 cgroup 的 CPU/内存限制；`lscpu` 只用于确认 CPU 型号和宿主机拓扑。
-- 避免写系统盘：代码、clone 的项目和临时中间文件优先放 `/root/autodl-tmp`；需要长期保留或体积较大的产物放 `/root/autodl-fs`。
+- 避免写系统盘：代码、clone 的项目和临时中间文件优先放 `/root/autodl-tmp` 本地数据盘；权重、数据和长期产物放 `/root/autodl-fs` 共享盘。环境目录不属于共享盘产物。
+- 新建、克隆和安装 conda/venv 环境及其 Python 包目录必须放本地数据盘，例如 `/root/autodl-tmp/conda-envs/<env>` 或 `/root/autodl-tmp/venvs/<env>`；禁止放在 `/root/autodl-fs`，也不能通过符号链接或实际挂载路径绕过此规则。已有平台 base 环境无需迁移。
+- 创建环境前核验目标的实际路径、挂载点和可用空间，预留安装解包及缓存所需空间；本地数据盘不足时先扩容或清理已获授权的缓存，不能自动回退到共享盘安装环境。环境归档备份可以放共享盘，运行前须恢复到本地数据盘。
 - AutoDL/GPUHub 路径约定：预训练模型 ckpt 放 `/root/autodl-fs/models/`，数据集放 `/root/autodl-fs/datasets/`，自己训练产生的 ckpt 放 `/root/autodl-fs/checkpoints/`，logs 放 `/root/autodl-fs/logs/`，其他输出放 `/root/autodl-fs/outputs/`。
 - Git、下载权重、下载数据集前，先检查是否已有 Clash 等代理；如果已有可用代理，不需要再 `source /etc/network_turbo`。
 - 先检查项目文件和 `conda env list`，再选择 conda 环境；不确定时先问用户。
-- 确定环境后，用 `conda activate <ENV_NAME>`，或用 `/root/miniconda3/bin/conda run -n <ENV_NAME> --no-capture-output <cmd>` 运行命令。
+- 确定环境后，用 `conda activate <ENV_NAME_OR_PREFIX>`；按路径创建的环境可用 `/root/miniconda3/bin/conda run -p /root/autodl-tmp/conda-envs/<env> --no-capture-output <cmd>` 运行，按名称注册的现有环境可用 `conda run -n <ENV_NAME>`。
 - SSH 连接信息以 AutoDL/GPUHub 页面显示为准，端口可能变化。
 - 写长指令时，把命令写到 `scripts/tmp/*.sh` 后执行，避免复杂引号转义出错；确认 `scripts/tmp/` 被 `.gitignore` 忽略，防止临时脚本被误提交或上传。
 - 不要把长实验直接写成 `ssh ... 'tmux new-session "... python ... --hyper_params {json} ..."'`。先在远端 repo 写好 quote-safe launcher，再用 SSH 只启动 `bash scripts/tmp/<run>.sh`。
