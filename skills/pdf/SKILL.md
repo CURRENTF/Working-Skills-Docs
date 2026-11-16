@@ -11,6 +11,14 @@ description: "Use when tasks involve reading, creating, or reviewing PDF files w
 - Create PDFs programmatically with reliable formatting.
 - Validate final rendering before delivery.
 
+## Gemini-only reading rule
+
+Apply this section only when the current model is Gemini; it takes precedence over the general text-extraction advice below.
+
+- Read PDFs with multimodal vision first: use native PDF input when the current client supports it; otherwise render the relevant pages to images and inspect them with vision. Read prose, equations, figures, tables, and layout together.
+- Do not start by bulk-extracting the entire PDF or filling the context with long text dumps. Text extraction is not a required preliminary step for Gemini.
+- Use text extraction only for a specific need, such as locating a passage, verifying an exact quotation or value, or when PDF/image input is unavailable. Limit extraction to the relevant pages or regions; report any visual-reading limitation.
+
 ## Workflow
 1. Prefer visual review: render PDF pages to PNGs and inspect them.
    - Use `pdftoppm` if available.

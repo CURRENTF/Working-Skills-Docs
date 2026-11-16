@@ -3,7 +3,7 @@
 ## 安装范围
 
 - `skills/`：通用 skills，可同步到桌面或无头 Linux。
-- `desktop-skills/`：桌面端选装，不纳入服务器同步。当前包括 `ego-browser` 和 `pptx-editability`。
+- `desktop-skills/`：桌面端选装，不纳入服务器同步。当前包括 `ego-browser`、`pptx-editability` 和 `dreamina-canvas-cli`。
 
 这是本仓库的部署策略，不代表 `pptx-editability` 技术上不支持 Linux。
 克隆仓库只保存文件；不要把整个仓库递归安装到 skill 搜索目录。
@@ -40,3 +40,6 @@ rsync -ai desktop-skills/pptx-editability/ "${CODEX_HOME:-$HOME/.codex}/skills/p
 不要再往 `~/.codex/skills/` 安装重复副本。新桌面环境先按
 `desktop-skills/ego-browser/references/install.md` 安装浏览器及其 skill；
 仓库快照不等于浏览器运行环境，不能用于向无头服务器自动安装 Ego。
+
+`dreamina-canvas-cli` 保存本机安装的 skill 及配套资料快照；使用前需另外安装
+Dreamina CLI 并完成账号授权，不纳入服务器自动同步。
